@@ -13,7 +13,7 @@ const Profile = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       {/* Status bar */}
-      <StatusBar backgroundColor={'transparent'} translucent />
+      <StatusBar backgroundColor={'transparent'} translucent />s
       {/* Background hijau */}
       <View style={styles.Container_Hijau}>
         {/* back dan Title*/}
