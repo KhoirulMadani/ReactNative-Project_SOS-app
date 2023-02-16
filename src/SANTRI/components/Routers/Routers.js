@@ -13,6 +13,8 @@ import DataAbsensi from '../../screen/Data Absensi/dataAbsensi';
 import Absensi from '../../screen/Absensi/Absensi';
 import PersentaseAbsen from '../../screen/Persentase Absen/persentaseAbsen';
 import Profile from '../../screen/Profile/Profile';
+import RequestKarya from '../../screen/RequestKarya/requestKarya';
+import PersonalData from '../../screen/Profile/personal data';
 
 // State management
 export const Dataglobal = createContext();
@@ -68,6 +70,16 @@ const Routers = () => {
       <Stack.Screen
         name="profile"
         component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="requestkarya"
+        component={RequestKarya}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="personaldata"
+        component={PersonalData}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

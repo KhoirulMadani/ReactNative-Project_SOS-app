@@ -192,6 +192,7 @@ const Dashboard = ({navigation}) => {
             Title2={'Absen'}
           />
           <Fitur
+            onPress={() => navigation.navigate('requestkarya')}
             image={require('../../assets/Icons/requestkarya.png')}
             style={{
               backgroundColor: '#FFCEFE',

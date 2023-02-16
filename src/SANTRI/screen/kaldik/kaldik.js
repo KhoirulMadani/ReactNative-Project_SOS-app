@@ -1,6 +1,7 @@
 import {
   Image,
   ImageBackground,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -75,31 +76,32 @@ const Kaldik = ({navigation}) => {
         {
           date: 5,
           day: 'senin',
-          keterangan: 'libur',
+          keterangan: 'nobar',
+          status: true,
         },
         {
           date: 6,
           day: 'senin',
-          keterangan: 'libur',
-          status: false,
+          keterangan: 'web binar',
+          status: true,
         },
         {
           date: 7,
           day: 'senin',
-          keterangan: 'libur',
-          status: false,
+          keterangan: 'web binar',
+          status: true,
         },
         {
           date: 8,
           day: 'senin',
-          keterangan: 'libur',
-          status: false,
+          keterangan: 'web binar',
+          status: true,
         },
         {
           date: 9,
           day: 'senin',
-          keterangan: 'libur',
-          status: false,
+          keterangan: 'web binar',
+          status: true,
         },
         {
           date: 10,
@@ -253,7 +255,7 @@ const Kaldik = ({navigation}) => {
       },
     );
     setHasil(hasilfilter);
-    console.log('hasil filter', hasilfilter);
+    console.log(hasilfilter);
   }
 
   return (
@@ -283,6 +285,7 @@ const Kaldik = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setSelectmonth(selectmonth - 1);
+                ket();
               }}
               disabled={selectmonth == 0}>
               <Image
@@ -298,6 +301,7 @@ const Kaldik = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 setSelectmonth(selectmonth + 1);
+                ket();
               }}
               disabled={selectmonth == 2}>
               <Image
@@ -337,19 +341,23 @@ const Kaldik = ({navigation}) => {
         {/* keterangan */}
         <View style={styles.kontenKeterangan}>
           <Text style={styles.textKeterangan}>Keterangan :</Text>
-          {hasil.map((value, index) => {
-            return (
-              <View key={index} style={styles.isiKeterangan}>
-                <View style={styles.viewTanggal}>
-                  <Text style={styles.textTanggal}>{value.date}</Text>
-                  <View style={styles.viewTitikDua}>
-                    <Text style={styles.textTitikDua}>:</Text>
+          <ScrollView>
+            {hasil.map((value, index) => {
+              return (
+                <View key={index} style={styles.isiKeterangan}>
+                  <View style={styles.viewTanggal}>
+                    <Text style={styles.textTanggal}>{value.date}</Text>
+                    <View style={styles.viewTitikDua}>
+                      <Text style={styles.textTitikDua}>:</Text>
+                    </View>
                   </View>
+                  <Text style={styles.textIsiKeterangan}>
+                    {value.keterangan}
+                  </Text>
                 </View>
-                <Text style={styles.textIsiKeterangan}>{value.keterangan}</Text>
-              </View>
-            );
-          })}
+              );
+            })}
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -426,8 +434,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tanggal: {
-    width: '95%',
-    height: 250,
+    width: '100%',
+    height: 210,
+    padding: 2,
+    alignItems: 'center',
     // backgroundColor: 'blue',
     marginTop: 20,
     flexDirection: 'row',
@@ -445,7 +455,7 @@ const styles = StyleSheet.create({
   },
   kontenKeterangan: {
     // backgroundColor: 'red',
-    // justifyContent: 'center',
+    justifyContent: 'center',
     paddingLeft: 25,
     height: '42%',
     width: '100%',
