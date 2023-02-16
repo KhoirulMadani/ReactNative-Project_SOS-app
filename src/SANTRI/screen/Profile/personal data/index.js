@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: 250,
-    backgroundColor: 'green',
+    backgroundColor: '#008C74',
   },
   isi: {
     width: '100%',
