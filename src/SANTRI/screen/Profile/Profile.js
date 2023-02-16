@@ -19,7 +19,7 @@ const Profile = ({navigation}) => {
         {/* back dan Title*/}
         <View style={styles.backAndTitle}>
           <View style={styles.back}>
-            <TouchableOpacity onPress={() => navigation.navigate('dashboard`')}>
+            <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
               <Icon name="chevron-back" size={30} color="white" />
             </TouchableOpacity>
           </View>
@@ -39,7 +39,8 @@ const Profile = ({navigation}) => {
               <Text style={styles.divisi}>Mobile dev</Text>
             </View>
             <View style={styles.editPersonalData}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('personaldata')}>
                 <Image
                   source={require('../../assets/Icons/editPersonal.png')}
                   style={styles.editPersonal}
