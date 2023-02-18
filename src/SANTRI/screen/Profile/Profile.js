@@ -51,7 +51,36 @@ const Profile = ({navigation}) => {
         </View>
       </View>
       {/* Background putih */}
-      <View></View>
+      <View style={styles.ContainerPutih}>
+        <View style={styles.ContainerChild}>
+          <ContainerChildUserProfile
+            source={require('../../assets/images/cv.png')}
+            title="CV"
+            icon={'chevron-forward'}
+            style={{width: 50, height: 50}}
+            styleContainer={{paddingHorizontal: 10}}
+          />
+          <ContainerChildUserProfile
+            source={require('../../assets/images/portofolio.png')}
+            title="Portofolio"
+            icon={'chevron-forward'}
+            style={{width: 50, height: 50}}
+            styleContainer={{paddingHorizontal: 10}}
+          />
+          <ContainerChildUserProfile
+            source={require('../../assets/images/problem.png')}
+            title="Laporkan Masalah"
+            style={{width: 50, height: 50}}
+            styleContainer={{paddingHorizontal: 10}}
+          />
+          <ContainerChildUserProfile
+            source={require('../../assets/Icons/logout.png')}
+            title="Logout Account"
+            style={{width: 23, height: 24}}
+            styleContainer={{paddingLeft: 25}}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -59,6 +88,7 @@ const styles = StyleSheet.create({
   Container_Hijau: {
     width: '100%',
     height: '33%',
+    zIndex: 3,
     backgroundColor: '#008C74',
   },
   backAndTitle: {
@@ -74,7 +104,7 @@ const styles = StyleSheet.create({
   },
   Title: {
     alignItems: 'center',
-    width: '65%',
+    width: '60%',
     // backgroundColor: 'purple',
   },
   textTitle: {
@@ -141,5 +171,73 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
     color: 'black',
   },
+  ContainerPutih: {
+    // backgroundColor: 'red',
+    width: '100%',
+    height: '67%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  ContainerChild: {
+    // backgroundColor: 'green',
+    width: '80%',
+    height: '76%',
+  },
 });
+
+const ContainerChildUserProfile = ({
+  source,
+  title,
+  icon,
+  style,
+  styleContainer,
+}) => {
+  return (
+    <TouchableOpacity>
+      <View
+        style={[
+          styleContainer,
+          {
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#D9D9D9',
+            width: '100%',
+            justifyContent: 'space-between',
+            marginTop: 20,
+            height: 50,
+            borderRadius: 7,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.23,
+            shadowRadius: 2.62,
+
+            elevation: 4,
+          },
+        ]}>
+        {/* Image */}
+        <View>
+          <Image source={source} style={style} />
+        </View>
+        {/* Title */}
+        <View>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: 'Poppins-SemiBold',
+              color: '#2F3132',
+            }}>
+            {title}
+          </Text>
+        </View>
+        {/* Icon(Optional) */}
+        <View>
+          <Icon name={icon} color="black" size={20} />
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
 export default Profile;
