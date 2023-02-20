@@ -10,14 +10,18 @@ import {
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import CheckBox from '@react-native-community/checkbox';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 const Login = ({navigation}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   return (
     <View style={styles.Container}>
-      <StatusBar backgroundColor={'transparent'} translucent />
+      <StatusBar hidden />
       {/* HEADER */}
       <View style={styles.Header}>
         <Image
@@ -84,41 +88,39 @@ const Login = ({navigation}) => {
           </View>
         </View>
 
-        {/* VIEW 2*/}
-        <View style={styles.View_2}>
-          {/* Remember Me */}
-          <View style={styles.rememberMe}>
-            <CheckBox
-              disabled={false}
-              value={toggleCheckBox}
-              onValueChange={newValue => {
-                setToggleCheckBox(newValue);
-              }}
-              tintColors={{true: '#008C74', false: '#999999'}}
-            />
-            <Text style={styles.textRememberMe}>Remember Me !</Text>
+        {/* VIEW 2 */}
+        {/* Remember Me */}
+        {/* <View style={styles.rememberMe}>
+          <CheckBox
+            disabled={false}
+            value={toggleCheckBox}
+            onValueChange={newValue => {
+              setToggleCheckBox(newValue);
+            }}
+            tintColors={{true: '#008C74', false: '#999999'}}
+          />
+          <Text style={styles.textRememberMe}>Remember Me !</Text>
+        </View> */}
+        {/* Button */}
+        {/* <TouchableOpacity onPress={() => navigation.replace('dashboard')}>
+          <View style={styles.button_masuk}>
+            <Text style={styles.textbtn}>Sign in</Text>
           </View>
-          {/* Button */}
-          <TouchableOpacity onPress={() => navigation.replace('dashboard')}>
-            <View style={styles.button_masuk}>
-              <Text style={styles.textbtn}>Sign in</Text>
-            </View>
+        </TouchableOpacity> */}
+        {/* lupa akun and blm punya akun */}
+        {/* <View style={{left: 100}}>
+          <TouchableOpacity>
+            <Text style={styles.textLupaAkun}>Lupa Email / Kata sandi ?</Text>
           </TouchableOpacity>
-          {/* lupa akun and blm punya akun */}
-          <View style={{left: 100}}>
-            <TouchableOpacity>
-              <Text style={styles.textLupaAkun}>Lupa Email / Kata sandi ?</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        {/* View 3  */}
-        <View style={styles.View_3}>
-          <Text style={styles.textDaftarAkun}>Belum punya akun ?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('register')}>
-            <Text style={styles.textDaftar}>Daftar</Text>
-          </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
+      {/* View 3  */}
+      {/* <View style={styles.View_3}>
+        <Text style={styles.textDaftarAkun}>Belum punya akun ?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('register')}>
+          <Text style={styles.textDaftar}>Daftar</Text>
+        </TouchableOpacity>
+      </View> */}
     </View>
   );
 };
@@ -130,33 +132,35 @@ const styles = StyleSheet.create({
   },
   Header: {
     width: '100%',
-    height: 280,
+    height: responsiveScreenHeight(35),
     backgroundColor: '#008C74',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
+    paddingLeft: responsiveScreenWidth(10),
   },
   logoHeader: {
-    width: 102,
-    height: 111,
+    resizeMode: 'contain',
+    width: responsiveScreenWidth(25),
+    height: responsiveScreenHeight(20),
     left: -15,
     bottom: 10,
   },
   isiHeader: {
     // backgroundColor: 'blue',
-    width: 150,
-    height: 100,
+    width: responsiveScreenWidth(50),
+    height: responsiveScreenHeight(10),
     justifyContent: 'space-evenly',
-    left: -15,
-    bottom: 32,
+    left: 2,
+    bottom: 20,
   },
   textWelcome: {
-    fontSize: 24,
+    fontSize: responsiveScreenFontSize(3),
     fontFamily: 'Poppins-Bold',
     color: 'white',
   },
   textSignUp: {
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(2),
     fontFamily: 'Poppins-SemiBold',
     color: 'white',
     top: 10,
