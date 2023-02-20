@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     width: '100%',
     // height: 270,
+
   },
   image: {
     width: '100%',

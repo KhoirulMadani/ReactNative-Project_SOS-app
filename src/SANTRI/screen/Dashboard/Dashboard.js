@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  StatusBar,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
@@ -73,10 +74,20 @@ const Dashboard = ({navigation}) => {
   }
 
   return (
-    <View style={{flex: 1, padding: 20, backgroundColor: 'white'}}>
+   
+
+    <View style={{flex: 1, paddingTop: 50, paddingHorizontal: 20}}>
+      {/* Status bar */}
+      <StatusBar
+        backgroundColor={'transparent'}
+        translucent
+        barStyle={'dark-content'}
+      />
+
       {/* Header */}
       <View style={styles.Header}>
-        <TouchableOpacity onPress={() => navigation.navigate('absensi')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('dashboardPengurus')}>
           <Image
             source={require('../../assets/Icons/User.png')}
             style={{width: 30, height: 30}}
@@ -90,7 +101,7 @@ const Dashboard = ({navigation}) => {
           <View>
             <Text style={styles.Title}>Sudah kah absen hari ini ?</Text>
             <Text style={styles.textAjakan}>
-              Ayoo...kita bangun kedisplinan
+              Ayoo...kita bangun kedisiplinan
             </Text>
           </View>
           <Image
