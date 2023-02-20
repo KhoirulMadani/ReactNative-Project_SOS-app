@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 20,
     fontFamily: 'Poppins-SemiBold',
-    color: 'black',
+    color: 'white',
+    top: 2,
   },
   Container_daftar_Materi: {
     // backgroundColor: 'red',
@@ -130,8 +131,8 @@ const DaftarMateri = ({number, namaMateri, style}) => {
           paddingVertical: 5,
           backgroundColor: 'white',
         }}>
-        <Text>Pekan</Text>
-        <Text>{number}</Text>
+        <Text style={{color: 'black'}}>Pekan</Text>
+        <Text style={{color: 'black'}}>{number}</Text>
       </View>
       <View
         style={{

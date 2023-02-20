@@ -5,147 +5,117 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
-import {Hoshi} from 'react-native-textinput-effects';
+import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import CheckBox from '@react-native-community/checkbox';
+
 const Login = ({navigation}) => {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   return (
     <View style={styles.Container}>
-      {/* Status bar */}
-      <StatusBar hidden />
-      {/* Header */}
-      <View style={styles.Container_Header}>
-        <View style={styles.Child_Header}>
-          <Image
-            source={require('../../assets/Icons/layer1.png')}
-            style={{width: 99, height: 108}}
-          />
-          <View
-            style={{
-              height: '55%',
-              marginLeft: 40,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 24,
-                fontFamily: 'Poppins-Bold',
-                color: 'white',
-              }}>
-              Welcome
-            </Text>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Poppins-SemiBold',
-                color: 'white',
-              }}>
-              Sign In
-            </Text>
-          </View>
+      <StatusBar backgroundColor={'transparent'} translucent />
+      {/* HEADER */}
+      <View style={styles.Header}>
+        <Image
+          source={require('../../assets/Icons/layer1.png')}
+          style={styles.logoHeader}
+        />
+        <View style={styles.isiHeader}>
+          <Text style={styles.textWelcome}>Welcome</Text>
+          <Text style={styles.textSignUp}>Sign In</Text>
         </View>
       </View>
-      {/* Container background putih */}
+      {/* BODY*/}
       <View style={styles.Container_content}>
-        {/* Area Text Input */}
-        <View style={styles.Container_TextInput}>
-          <View style={{alignItems: 'center'}}>
+        {/* Form SignIn */}
+        <View style={styles.formSignIn}>
+          {/* Email */}
+          <View>
+            <Text style={styles.textTiltle}>Email</Text>
             <View style={styles.TextInput}>
               <Icon
                 name="email-outline"
                 size={26}
-                color={'black'}
+                color={'#999999'}
                 style={{marginTop: 15}}
               />
-              <Hoshi
-                label={'Email'}
-                borderColor={'#28AFEF'}
-                borderHeight={3}
-                inputPadding={18}
-                style={{width: '80%'}}
-                inputStyle={{color: 'black'}}
-                backgroundColor={'#F9F7F6'}
+              <TextInput
+                style={styles.STextInput}
+                underlineColorAndroid="transparent"
               />
             </View>
           </View>
-          <View style={{alignItems: 'center'}}>
+          {/* Kata Sandi */}
+          <View>
+            <Text style={styles.textTiltle}>Kata Sandi</Text>
             <View style={styles.TextInput2}>
               <Icon
                 name="lock-outline"
                 size={29}
-                color={'black'}
+                color={'#999999'}
                 style={{marginTop: 15}}
               />
-              <Hoshi
+              <TextInput
+                style={styles.STextInput}
                 secureTextEntry={secureTextEntry}
-                label={'Password'}
-                borderColor={'#b76c94'}
-                borderHeight={3}
-                inputPadding={18}
-                style={{width: '70%'}}
-                inputStyle={{color: 'black'}}
-                backgroundColor={'#F9F7F6'}
               />
-              <View style={{marginLeft: 30}}>
-                <TouchableOpacity
-                  onPress={() => {
-                    setSecureTextEntry(!secureTextEntry);
+
+              <TouchableOpacity
+                onPress={() => {
+                  setSecureTextEntry(!secureTextEntry);
+                }}>
+                <View
+                  style={{
+                    backgroundColor: 'white',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                    width: 50,
+                    height: 40,
+                    top: 10,
                   }}>
-                  <Icon
-                    name="eye-off-outline"
-                    size={26}
-                    color={'#3F3E3F'}
-                    style={{marginTop: 20}}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-          {/* Remember Me */}
-          <View style={styles.rememberMe}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CheckBox
-                disabled={false}
-                value={toggleCheckBox}
-                onValueChange={newValue => {
-                  setToggleCheckBox(newValue);
-                }}
-              />
-              <Text
-                style={{marginLeft: 5, fontWeight: '900', color: '#008C74'}}>
-                Remember Me !
-              </Text>
-            </View>
-            {/* lupa akun and blm punya akun */}
-            <View style={styles.Container_bantuan}>
-              <TouchableOpacity>
-                <Text>Lupa Email / Kata sandi ?</Text>
+                  <Icon name="eye-off-outline" size={26} color={'#999999'} />
+                </View>
               </TouchableOpacity>
             </View>
           </View>
         </View>
-        {/* Button login */}
-        <View style={styles.Container_login}>
+
+        {/* VIEW 2*/}
+        <View style={styles.View_2}>
+          {/* Remember Me */}
+          <View style={styles.rememberMe}>
+            <CheckBox
+              disabled={false}
+              value={toggleCheckBox}
+              onValueChange={newValue => {
+                setToggleCheckBox(newValue);
+              }}
+              tintColors={{true: '#008C74', false: '#999999'}}
+            />
+            <Text style={styles.textRememberMe}>Remember Me !</Text>
+          </View>
+          {/* Button */}
           <TouchableOpacity onPress={() => navigation.replace('dashboard')}>
             <View style={styles.button_masuk}>
-              <Text style={{color: 'white', fontSize: 18}}>Masuk</Text>
+              <Text style={styles.textbtn}>Sign in</Text>
             </View>
           </TouchableOpacity>
+          {/* lupa akun and blm punya akun */}
+          <View style={{left: 100}}>
+            <TouchableOpacity>
+              <Text style={styles.textLupaAkun}>Lupa Email / Kata sandi ?</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        {/* Belum punya akun */}
-        <View style={styles.Belum_Memiliki_akun}>
-          <Text>Belum Memiliki akun?</Text>
+        {/* View 3  */}
+        <View style={styles.View_3}>
+          <Text style={styles.textDaftarAkun}>Belum punya akun ?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('register')}>
-            <Text style={{color: '#008C74', fontSize: 15, fontWeight: '800'}}>
-              {' '}
-              Daftar
-            </Text>
+            <Text style={styles.textDaftar}>Daftar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -155,77 +125,138 @@ const Login = ({navigation}) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    backgroundColor: '#2F8473',
+    backgroundColor: '#28AFEF',
+    // padding: 20,
   },
-  Container_Header: {
-    height: '30%',
-    justifyContent: 'center',
+  Header: {
+    width: '100%',
+    height: 280,
+    backgroundColor: '#008C74',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-  },
-  Child_Header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '70%',
-    paddingRight: 40,
+  },
+  logoHeader: {
+    width: 102,
+    height: 111,
+    left: -15,
+    bottom: 10,
+  },
+  isiHeader: {
+    // backgroundColor: 'blue',
+    width: 150,
+    height: 100,
+    justifyContent: 'space-evenly',
+    left: -15,
+    bottom: 32,
+  },
+  textWelcome: {
+    fontSize: 24,
+    fontFamily: 'Poppins-Bold',
+    color: 'white',
+  },
+  textSignUp: {
+    fontSize: 20,
+    fontFamily: 'Poppins-SemiBold',
+    color: 'white',
+    top: 10,
   },
   Container_content: {
-    backgroundColor: '#ffff',
+    backgroundColor: 'white',
+    height: '100%',
     width: '100%',
-    height: '70%',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    paddingTop: 60,
+    paddingTop: 15,
+    padding: 5,
+    bottom: 30,
   },
-  Container_TextInput: {
-    height: '50%',
+  formSignIn: {
+    justifyContent: 'center',
+    top: 50,
     // backgroundColor: 'red',
+    height: 260,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  textTiltle: {
+    color: '#999999',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 17,
   },
   TextInput: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
-    width: '95%',
-    paddingBottom: 10,
+    width: '100%',
+    // backgroundColor: 'red',
+    borderBottomColor: '#999999',
+    borderBottomWidth: 2,
+  },
+  STextInput: {
+    // backgroundColor: 'yellow',
+    top: 10,
+    left: 5,
+    color: 'black',
+    width: '85%',
+    height: 60,
+    fontFamily: 'Poppins-SemiBold',
   },
   TextInput2: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 10,
-    marginTop: 15,
-    width: '95%',
+    width: '88%',
+    borderBottomColor: '#999999',
+    borderBottomWidth: 2,
+    // backgroundColor: 'red',
+  },
+  View_2: {
+    height: 240,
+    // backgroundColor: 'purple',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    top: 50,
   },
   rememberMe: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: 20,
-    paddingTop: 30,
+    left: -140,
+    bottom: 20,
   },
-  Container_bantuan: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    paddingHorizontal: 15,
+  textRememberMe: {
+    marginLeft: 5,
+    color: '#008C74',
+    fontFamily: 'Poppins-SemiBold',
   },
-  Container_login: {
-    height: '26%',
-    // backgroundColor: 'red',
+  button_masuk: {
+    borderRadius: 10,
+    backgroundColor: '#008C74',
+    width: 350,
+    height: 55,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button_masuk: {
-    paddingHorizontal: 120,
-    borderRadius: 6,
-    paddingVertical: 7,
-    backgroundColor: '#008C74',
+  textbtn: {
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    color: 'white',
   },
-  Belum_Memiliki_akun: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
+  textLupaAkun: {
+    color: '#999999',
+    fontFamily: 'Poppins-SemiBold',
+  },
+  View_3: {
+    marginTop: 180,
     justifyContent: 'center',
-    height: '25%',
-    // backgroundColor: 'red',
-    paddingBottom: 20,
+    flexDirection: 'row',
+  },
+  textDaftarAkun: {
+    color: '#999999',
+    fontFamily: 'Poppins-SemiBold',
+  },
+  textDaftar: {
+    left: 10,
+    color: '#008C74',
+    fontFamily: 'Poppins-SemiBold',
   },
 });
 export default Login;
