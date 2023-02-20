@@ -1,6 +1,7 @@
 import {
   Image,
   ImageBackground,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -12,6 +13,8 @@ import React from 'react';
 const RequestKarya = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={'transparent'} translucent />
+
       {/* HEADER */}
       <View style={styles.header}>
         <ImageBackground
@@ -23,7 +26,7 @@ const RequestKarya = ({navigation}) => {
               style={styles.iconback}
             />
           </TouchableOpacity>
-          <Text style={styles.textheader}>Kalender Akademik</Text>
+          <Text style={styles.textheader}>RequestKarya</Text>
         </ImageBackground>
       </View>
       {/* FORM PORTOFOLIO */}
@@ -56,8 +59,10 @@ const RequestKarya = ({navigation}) => {
         </View>
 
         {/* BUTTON */}
-        <View style={styles.btnKirim}>
-          <Text style={styles.text3}>Kirim</Text>
+        <View style={styles.viewbtnKirim}>
+          <TouchableOpacity style={styles.btnKirim}>
+            <Text style={styles.text3}>Kirim</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -75,24 +80,25 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'blue',
     width: '100%',
-    height: 230,
+    // height: 270,
+
   },
   image: {
     width: '100%',
-    height: 250,
+    height: 285,
   },
   iconback: {
     width: 11.04,
     height: 19.28,
     left: 25,
-    top: 23,
+    top: 38,
   },
   textheader: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 18,
     left: 70,
-    bottom: 1,
+    top: 16,
   },
   formPortopolio: {
     // backgroundColor: 'red',
@@ -134,14 +140,22 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 48,
     // backgroundColor: 'green',
+    color: 'black',
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: 15,
+    left: 8,
+  },
+  viewbtnKirim: {
+    // backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: 15,
   },
   btnKirim: {
     width: 227,
     height: 46,
     backgroundColor: '#008C74',
     borderRadius: 10,
-    marginTop: 30,
-    marginLeft: 55,
     justifyContent: 'center',
     alignItems: 'center',
   },

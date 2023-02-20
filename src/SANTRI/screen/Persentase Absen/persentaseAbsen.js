@@ -103,12 +103,13 @@ const PersentaseAbsen = ({navigation}) => {
       {/* Header */}
       <ImageBackground
         source={require('../../assets/images/headerPersentase.png')}
-        style={{width: '100%', height: 280}}>
-        <TouchableOpacity
-          style={{marginTop: 35, marginLeft: 20}}
-          onPress={() => navigation.navigate('dashboard')}>
-          <Icon name="chevron-back" color={'white'} size={35} />
-        </TouchableOpacity>
+        style={{width: '100%', height: 300}}>
+        <View style={styles.viewTitle}>
+          <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
+            <Icon name="chevron-back" color={'white'} size={35} />
+          </TouchableOpacity>
+          <Text style={styles.judul}>Persentase Absen</Text>
+        </View>
       </ImageBackground>
       {/* Title */}
       <View style={{marginLeft: 20, marginTop: 20}}>
@@ -178,9 +179,10 @@ const PersentaseAbsen = ({navigation}) => {
           style={{
             // backgroundColor: 'purple',
             width: '47%',
-            height: '100%',
-            paddingTop: 20,
+            height: '80%',
             alignItems: 'center',
+            justifyContent: 'center',
+            bottom: 13,
           }}>
           <Persen nilai={hasilpersentase[0]} backgroundColor={'#23DC1F'} />
           <Persen nilai={hasilpersentase[1]} backgroundColor={'red'} />
@@ -199,9 +201,21 @@ const PersentaseAbsen = ({navigation}) => {
   );
 };
 const styles = StyleSheet.create({
-  Title: {
+  viewTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    top: 30,
+    left: 20,
+  },
+  judul: {
+    color: 'white',
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 17,
+    fontSize: 20,
+    left: 10,
+  },
+  Title: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: 21,
     color: 'black',
   },
   NavigasiBulan: {
@@ -213,13 +227,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   Bulan: {
-    fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    color: 'black',
   },
   Tahun: {
-    fontSize: 17,
+    fontSize: 20,
     marginLeft: 15,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Poppins-Bold',
+    color: 'black',
   },
   Container_Keterangan: {
     backgroundColor: '#D9D9D9',
@@ -249,8 +265,12 @@ const Persen = ({backgroundColor, nilai}) => {
           width: 20,
           height: 20,
         }}></View>
-      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 3}}>:</Text>
-      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 5}}>{nilai} %</Text>
+      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 3, color: 'black'}}>
+        :
+      </Text>
+      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 5, color: 'black'}}>
+        {nilai} %
+      </Text>
     </View>
   );
 };
@@ -274,8 +294,12 @@ const Keterangan = ({backgroundColor, text}) => {
           backgroundColor: backgroundColor,
           borderRadius: 20,
         }}></View>
-      <Text style={{marginLeft: 5}}>:</Text>
-      <Text style={{marginLeft: 5}}>{text}</Text>
+      <Text style={{marginLeft: 5, fontFamily: 'Poppins-Bold', color: 'black'}}>
+        :
+      </Text>
+      <Text style={{marginLeft: 5, fontFamily: 'Poppins-Bold', color: 'black'}}>
+        {text}
+      </Text>
     </View>
   );
 };

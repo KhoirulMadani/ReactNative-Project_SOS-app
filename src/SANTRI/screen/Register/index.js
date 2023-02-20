@@ -76,6 +76,7 @@ const Register = ({navigation}) => {
   ]);
   return (
     <View style={styles.Container}>
+      <StatusBar backgroundColor={'transparent'} translucent />
       {/* HEADER */}
       <View style={styles.Header}>
         <Image
@@ -87,8 +88,6 @@ const Register = ({navigation}) => {
           <Text style={styles.textSignUp}>Sign Up</Text>
         </View>
       </View>
-
-      {/* Container background putih */}
       {/* FORM REGISTER */}
       <View style={styles.Container_content}>
         {/* data data */}
@@ -165,15 +164,8 @@ const Register = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="Nama Lengkap"
-                  style={{
-                    // backgroundColor: 'blue',
-                    width: '85%',
-                    left: 10,
-                    top: 4,
-                    borderBottomWidth: 2,
-                    borderBottomColor: '#999999',
-                    fontFamily: 'Poppins-SemiBold',
-                  }}
+                  placeholderTextColor={'#999999'}
+                  style={styles.STextInput}
                 />
               </View>
             </View>
@@ -188,15 +180,8 @@ const Register = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="No Telepon"
-                  style={{
-                    // backgroundColor: 'blue',
-                    width: '85%',
-                    left: 6,
-                    top: 4,
-                    borderBottomWidth: 2,
-                    fontFamily: 'Poppins-SemiBold',
-                    borderBottomColor: '#999999',
-                  }}
+                  placeholderTextColor={'#999999'}
+                  style={styles.STextInput}
                 />
               </View>
             </View>
@@ -211,16 +196,8 @@ const Register = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="Email"
-                  keyboardShouldPersistTaps="always"
-                  style={{
-                    // backgroundColor: 'blue',
-                    width: '85%',
-                    left: 6,
-                    top: 4,
-                    borderBottomWidth: 2,
-                    borderBottomColor: '#999999',
-                    fontFamily: 'Poppins-SemiBold',
-                  }}
+                  placeholderTextColor={'#999999'}
+                  style={styles.STextInput}
                 />
               </View>
             </View>
@@ -235,16 +212,9 @@ const Register = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="Kata Sandi"
+                  placeholderTextColor={'#999999'}
+                  style={styles.STextInput}
                   secureTextEntry={secureTextEntry}
-                  style={{
-                    // backgroundColor: 'blue',
-                    width: '85%',
-                    left: 4,
-                    top: 4,
-                    borderBottomWidth: 2,
-                    borderBottomColor: '#999999',
-                    fontFamily: 'Poppins-SemiBold',
-                  }}
                 />
                 <View style={{right: 20, backgroundColor: 'white'}}>
                   <TouchableOpacity
@@ -272,19 +242,10 @@ const Register = ({navigation}) => {
                 style={{marginTop: 15}}
               />
               <TextInput
-                keyboardAppearance="light"
-                keyboardType="default"
                 placeholder="Kode Masuk"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
                 secureTextEntry={secureTextEntry2}
-                style={{
-                  // backgroundColor: 'blue',
-                  width: '85%',
-                  left: 4,
-                  top: 4,
-                  borderBottomWidth: 2,
-                  borderBottomColor: '#999999',
-                  fontFamily: 'Poppins-SemiBold',
-                }}
               />
               <View style={{right: 20, backgroundColor: 'white'}}>
                 <TouchableOpacity
@@ -305,7 +266,7 @@ const Register = ({navigation}) => {
 
         {/* Button login */}
         <View style={styles.Container_Daftar}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('login')}>
             <View style={styles.button_masuk}>
               <Text style={styles.textbtn}>Sign Up</Text>
             </View>
@@ -323,15 +284,15 @@ const styles = StyleSheet.create({
   },
   Header: {
     width: '100%',
-    height: 250,
+    height: 280,
     backgroundColor: '#008C74',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
   },
   logoHeader: {
-    width: 99,
-    height: 108,
+    width: 102,
+    height: 111,
     left: -15,
     bottom: 10,
   },
@@ -356,53 +317,16 @@ const styles = StyleSheet.create({
   },
   Container_content: {
     backgroundColor: 'white',
-    height: 600,
+    height: '100%',
     width: '100%',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     paddingTop: 15,
-    bottom: 0,
-    position: 'absolute',
-  },
-  Container_backAndTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  Title: {
-    fontSize: 19,
-    fontWeight: '900',
-    color: 'black',
-  },
-  Container_Status: {
-    height: 55,
-    marginTop: 10,
-    alignItems: 'center',
-  },
-  Container_Status2: {
-    flexDirection: 'row',
-    width: '87%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: '#DFE5DF',
-    borderRadius: 10,
-    padding: 5,
-  },
-  Container_login_status: {
-    paddingVertical: 8,
-    paddingHorizontal: 45,
-  },
-  Container_register_status: {
-    backgroundColor: '#27D02A',
-    paddingHorizontal: 45,
-    borderWidth: 2,
-    borderColor: 'black',
-    paddingVertical: 8,
-    borderRadius: 8,
+    bottom: 30,
   },
   dataData: {
     justifyContent: 'center',
-    top: 20,
+    top: 50,
     backgroundColor: 'white',
     height: 460,
   },
@@ -417,13 +341,22 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     marginTop: 15,
   },
-
   TextInput: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingLeft: 10,
     width: '95%',
     paddingBottom: 10,
+  },
+  STextInput: {
+    // backgroundColor: 'blue',
+    color: 'black',
+    width: '85%',
+    left: 10,
+    top: 4,
+    borderBottomWidth: 2,
+    borderBottomColor: '#999999',
+    fontFamily: 'Poppins-SemiBold',
   },
   TextInput2: {
     flexDirection: 'row',

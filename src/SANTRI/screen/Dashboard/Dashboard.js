@@ -74,6 +74,8 @@ const Dashboard = ({navigation}) => {
   }
 
   return (
+   
+
     <View style={{flex: 1, paddingTop: 50, paddingHorizontal: 20}}>
       {/* Status bar */}
       <StatusBar
@@ -81,6 +83,7 @@ const Dashboard = ({navigation}) => {
         translucent
         barStyle={'dark-content'}
       />
+
       {/* Header */}
       <View style={styles.Header}>
         <TouchableOpacity
@@ -90,7 +93,7 @@ const Dashboard = ({navigation}) => {
             style={{width: 30, height: 30}}
           />
         </TouchableOpacity>
-        <Text style={[styles.NamaSantri]}>Hai, Farhan Mahendra</Text>
+        <Text style={[styles.NamaSantri]}>Hai, Khoirul Madani</Text>
       </View>
       {/* Absensi */}
       <View style={styles.Container_absensi}>
@@ -158,6 +161,7 @@ const Dashboard = ({navigation}) => {
               width: 60,
               height: 60,
               borderRadius: 19,
+              color: 'black',
             }}
             Title="Kurikulum"
           />
@@ -337,8 +341,23 @@ const Fitur = ({image, Title, Title2, style, style2, onPress}) => {
         <View style={style}>
           <Image source={image} style={[{width: 60, height: 60}, style2]} />
         </View>
-        <Text style={{marginTop: 8}}>{Title}</Text>
-        <Text>{Title2}</Text>
+        <Text
+          style={{
+            marginTop: 8,
+            color: 'black',
+            fontFamily: 'Poppins-SemiBold',
+            fontSize: 15,
+          }}>
+          {Title}
+        </Text>
+        <Text
+          style={{
+            color: 'black',
+            fontFamily: 'Poppins-SemiBold',
+            fontSize: 15,
+          }}>
+          {Title2}
+        </Text>
       </View>
     </TouchableOpacity>
   );

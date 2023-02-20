@@ -406,7 +406,7 @@ const styles = StyleSheet.create({
   isi: {
     backgroundColor: 'white',
     width: '100%',
-    height: 570,
+    height: '100%',
   },
   pembungkusSlide: {
     // backgroundColor: 'blue',
@@ -457,6 +457,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     justifyContent: 'center',
     paddingLeft: 25,
+    top: 10,
     height: '42%',
     width: '100%',
   },

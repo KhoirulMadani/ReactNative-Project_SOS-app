@@ -355,7 +355,7 @@ const DataAbsensi = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       {/* Status bar */}
       <StatusBar
         backgroundColor={'transparent'}
@@ -456,8 +456,8 @@ const styles = StyleSheet.create({
   Title: {
     color: 'black',
     marginLeft: 15,
-    fontSize: 17,
-    fontFamily: 'Poppins-BoldItalic',
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
   },
   NavigasiBulan: {
     flexDirection: 'row',
@@ -468,13 +468,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   Bulan: {
-    fontSize: 17,
-    fontFamily: 'Poppins-SemiBold',
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    color: 'black',
   },
   Tahun: {
-    fontSize: 17,
+    fontSize: 20,
     marginLeft: 15,
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Poppins-Bold',
+    color: 'black',
   },
   ContainerTanggal: {
     // backgroundColor: 'red',
@@ -496,6 +498,7 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 20,
     fontFamily: 'Poppins-SemiBold',
+    color: 'black',
     fontSize: 15,
   },
   Container_Keterangan: {
@@ -526,8 +529,8 @@ const Keterangan = ({color, text}) => {
         style={[
           {width: 20, height: 20, backgroundColor: color, borderRadius: 20},
         ]}></View>
-      <Text style={{marginLeft: 5}}>:</Text>
-      <Text style={{marginLeft: 5}}>{text}</Text>
+      <Text style={{marginLeft: 5, color: 'black'}}>:</Text>
+      <Text style={{marginLeft: 5, color: 'black'}}>{text}</Text>
     </View>
   );
 };
