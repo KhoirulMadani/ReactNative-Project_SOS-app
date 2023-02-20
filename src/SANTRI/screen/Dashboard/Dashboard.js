@@ -74,9 +74,13 @@ const Dashboard = ({navigation}) => {
   }
 
   return (
-   
-
-    <View style={{flex: 1, paddingTop: 50, paddingHorizontal: 20}}>
+    <View
+      style={{
+        flex: 1,
+        paddingTop: 50,
+        paddingHorizontal: 20,
+        backgroundColor: 'white',
+      }}>
       {/* Status bar */}
       <StatusBar
         backgroundColor={'transparent'}
