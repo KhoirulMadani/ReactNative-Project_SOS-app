@@ -29,7 +29,11 @@ const Login = ({navigation}) => {
           style={styles.logoHeader}
         />
         <View style={styles.isiHeader}>
-          <Text style={styles.textWelcome}>Welcome</Text>
+          <Text
+            style={styles.textWelcome}
+            onPress={() => navigation.replace('dashboard')}>
+            Welcome
+          </Text>
           <Text style={styles.textSignUp}>Sign In</Text>
         </View>
       </View>
@@ -87,7 +91,6 @@ const Login = ({navigation}) => {
             </View>
           </View>
         </View>
-
         {/* VIEW 2 */}
         {/* Remember Me */}
         {/* <View style={styles.rememberMe}>
@@ -107,6 +110,7 @@ const Login = ({navigation}) => {
             <Text style={styles.textbtn}>Sign in</Text>
           </View>
         </TouchableOpacity> */}
+
         {/* lupa akun and blm punya akun */}
         {/* <View style={{left: 100}}>
           <TouchableOpacity>
@@ -115,12 +119,12 @@ const Login = ({navigation}) => {
         </View> */}
       </View>
       {/* View 3  */}
-      {/* <View style={styles.View_3}>
+      {/* `<View style={styles.View_3}>
         <Text style={styles.textDaftarAkun}>Belum punya akun ?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('register')}>
           <Text style={styles.textDaftar}>Daftar</Text>
         </TouchableOpacity>
-      </View> */}
+      </View>` */}
     </View>
   );
 };

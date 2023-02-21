@@ -9,6 +9,11 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 const Dashboard = ({navigation}) => {
   // lifeCycle
   useEffect(() => {
@@ -74,9 +79,12 @@ const Dashboard = ({navigation}) => {
   }
 
   return (
-   
-
-    <View style={{flex: 1, paddingTop: 50, paddingHorizontal: 20}}>
+    <View
+      style={{
+        flex: 1,
+        paddingTop: responsiveScreenHeight(6.5),
+        paddingHorizontal: responsiveScreenWidth(5),
+      }}>
       {/* Status bar */}
       <StatusBar
         backgroundColor={'transparent'}
@@ -90,7 +98,11 @@ const Dashboard = ({navigation}) => {
           onPress={() => navigation.navigate('dashboardPengurus')}>
           <Image
             source={require('../../assets/Icons/User.png')}
-            style={{width: 30, height: 30}}
+            style={{
+              width: responsiveScreenWidth(9),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(5.1),
+            }}
           />
         </TouchableOpacity>
         <Text style={[styles.NamaSantri]}>Hai, Khoirul Madani</Text>
@@ -106,7 +118,11 @@ const Dashboard = ({navigation}) => {
           </View>
           <Image
             source={require('../../assets/Icons/Scan1.png')}
-            style={{width: 50, height: 45}}
+            style={{
+              width: responsiveScreenWidth(13),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
           />
         </View>
         <View style={styles.child_Absensi2}>
@@ -128,13 +144,18 @@ const Dashboard = ({navigation}) => {
             <View style={styles.Tombol_absen}>
               <Image
                 source={require('../../assets/Icons/Scan2.png')}
-                style={{width: 18, height: 18}}
+                style={{
+                  width: responsiveScreenWidth(5),
+                  resizeMode: 'contain',
+                  height: responsiveScreenHeight(5),
+                }}
               />
               <Text
                 style={{
                   color: '#249ED3',
                   fontFamily: 'Poppins-Bold',
-                  fontSize: 12.5,
+                  fontSize: responsiveScreenFontSize(1.7),
+                  marginLeft: responsiveScreenWidth(2),
                 }}>
                 Absen
               </Text>
@@ -145,7 +166,11 @@ const Dashboard = ({navigation}) => {
       {/* Title */}
       <View style={styles.Container_Title}>
         <Text
-          style={{fontSize: 18, fontFamily: 'Poppins-SemiBold', color: '#000'}}>
+          style={{
+            fontSize: responsiveScreenFontSize(2.3),
+            fontFamily: 'Poppins-SemiBold',
+            color: '#000',
+          }}>
           Dashboard Santri
         </Text>
       </View>
@@ -158,10 +183,12 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/kurikulum.png')}
             style={{
               backgroundColor: 'yellow',
-              width: 60,
-              height: 60,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
               color: 'black',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             Title="Kurikulum"
           />
@@ -170,9 +197,11 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/Kalender.png')}
             style={{
               backgroundColor: '#F45B2B',
-              width: 60,
-              height: 60,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             Title="Kalender"
             Title2={'Pendidikan'}
@@ -182,9 +211,11 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/dataAbsensi.png')}
             style={{
               backgroundColor: '#F62697',
-              width: 60,
-              height: 60,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             Title="Data"
             Title2={'Absensi'}
@@ -196,9 +227,11 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/persentase.png')}
             style={{
               backgroundColor: '#3AEAAB',
-              width: 60,
-              height: 60,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             Title="Persentase"
             Title2={'Absen'}
@@ -208,8 +241,8 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/requestkarya.png')}
             style={{
               backgroundColor: '#FFCEFE',
-              width: 65,
-              height: 65,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
               alignItems: 'center',
               justifyContent: 'center',
@@ -222,9 +255,11 @@ const Dashboard = ({navigation}) => {
             image={require('../../assets/Icons/portofolio.png')}
             style={{
               backgroundColor: '#B6E2A1',
-              width: 60,
-              height: 60,
+              width: responsiveScreenWidth(17),
+              height: responsiveScreenHeight(9),
               borderRadius: 19,
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             Title="Profile"
             Title2={'Saya'}
@@ -241,46 +276,46 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
   },
   NamaSantri: {
-    marginLeft: 15,
-    fontSize: 18,
+    marginLeft: responsiveScreenWidth(3),
+    fontSize: responsiveScreenFontSize(2.2),
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
   },
   Container_absensi: {
-    marginTop: 30,
+    marginTop: responsiveScreenWidth(7),
   },
   child_Absensi1: {
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: responsiveScreenWidth(5),
+    borderTopRightRadius: responsiveScreenWidth(5),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
+    paddingHorizontal: responsiveScreenWidth(5),
     backgroundColor: '#008C74',
-    height: 100,
+    height: responsiveScreenHeight(13),
     alignItems: 'center',
   },
   Title: {
     fontFamily: 'Poppins-Bold',
-    fontSize: 17,
+    fontSize: responsiveScreenFontSize(2.1),
     color: 'white',
   },
   textAjakan: {
     fontFamily: 'Poppins-Bold',
-    fontSize: 12,
+    fontSize: responsiveScreenFontSize(1.5),
     color: 'white',
   },
   textArahan: {
     fontFamily: 'Poppins-Bold',
-    fontSize: 12,
+    fontSize: responsiveScreenFontSize(1.6),
     color: 'black',
   },
   child_Absensi2: {
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
+    paddingHorizontal: responsiveScreenWidth(2),
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: 'white',
-    height: 70,
+    height: responsiveScreenHeight(10),
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -295,12 +330,13 @@ const styles = StyleSheet.create({
   },
   Tombol_absen: {
     // backgroundColor: '#D5DADC',
+    // height: responsiveScreenHeight(5),
     flexDirection: 'row',
-    width: 100,
+    width: responsiveScreenWidth(25.5),
     backgroundColor: 'white',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 12,
+    paddingLeft: responsiveScreenWidth(3),
     borderWidth: 2,
     borderColor: 'grey',
     shadowColor: 'black',
@@ -311,20 +347,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 5,
-    paddingRight: 15,
-    paddingVertical: 8,
+    paddingRight: responsiveScreenWidth(3),
     borderRadius: 20,
   },
   Container_Title: {
     // backgroundColor: 'red',
-    marginTop: 30,
+    marginTop: responsiveScreenHeight(4.5),
   },
   Container_Fitur: {
-    marginTop: 10,
+    marginTop: responsiveScreenHeight(2),
     // backgroundColor: 'red',
     width: '100%',
-    height: 300,
-    padding: 20,
+    height: responsiveScreenHeight(50),
+    padding: responsiveScreenWidth(5),
     alignItems: 'flex-start',
   },
   Child_Fitur: {
@@ -339,14 +374,23 @@ const Fitur = ({image, Title, Title2, style, style2, onPress}) => {
     <TouchableOpacity onPress={onPress}>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <View style={style}>
-          <Image source={image} style={[{width: 60, height: 60}, style2]} />
+          <Image
+            source={image}
+            style={[
+              {
+                width: responsiveScreenWidth(16),
+                height: responsiveScreenHeight(7.5),
+              },
+              style2,
+            ]}
+          />
         </View>
         <Text
           style={{
             marginTop: 8,
             color: 'black',
             fontFamily: 'Poppins-SemiBold',
-            fontSize: 15,
+            fontSize: responsiveScreenFontSize(1.7),
           }}>
           {Title}
         </Text>
@@ -354,7 +398,7 @@ const Fitur = ({image, Title, Title2, style, style2, onPress}) => {
           style={{
             color: 'black',
             fontFamily: 'Poppins-SemiBold',
-            fontSize: 15,
+            fontSize: responsiveScreenFontSize(1.7),
           }}>
           {Title2}
         </Text>
