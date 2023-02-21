@@ -13,6 +13,7 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
   responsiveScreenFontSize,
+  useResponsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 const Dashboard = ({navigation}) => {
   // lifeCycle
@@ -83,7 +84,7 @@ const Dashboard = ({navigation}) => {
       style={{
         flex: 1,
         paddingTop: responsiveScreenHeight(6.5),
-        paddingHorizontal: responsiveScreenWidth(5),
+        paddingHorizontal: useResponsiveScreenWidth(6),
       }}>
       {/* Status bar */}
       <StatusBar
