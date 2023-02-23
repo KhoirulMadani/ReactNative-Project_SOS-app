@@ -8,7 +8,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 const Profile = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
@@ -20,7 +24,11 @@ const Profile = ({navigation}) => {
         <View style={styles.backAndTitle}>
           <View style={styles.back}>
             <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-              <Icon name="chevron-back" size={30} color="white" />
+              <Icon
+                name="chevron-back"
+                size={responsiveScreenWidth(8)}
+                color="white"
+              />
             </TouchableOpacity>
           </View>
           <View style={styles.Title}>
@@ -57,27 +65,40 @@ const Profile = ({navigation}) => {
             source={require('../../assets/images/cv.png')}
             title="CV"
             icon={'chevron-forward'}
-            style={{width: 50, height: 50}}
-            styleContainer={{paddingHorizontal: 10}}
+            style={{
+              width: responsiveScreenWidth(11),
+              height: responsiveScreenHeight(8),
+            }}
+            styleContainer={{paddingHorizontal: 12}}
           />
           <ContainerChildUserProfile
             source={require('../../assets/images/portofolio.png')}
             title="Portofolio"
             icon={'chevron-forward'}
-            style={{width: 50, height: 50}}
-            styleContainer={{paddingHorizontal: 10}}
+            style={{
+              width: responsiveScreenWidth(11),
+              height: responsiveScreenHeight(8),
+            }}
+            styleContainer={{paddingHorizontal: 12}}
           />
           <ContainerChildUserProfile
             source={require('../../assets/images/problem.png')}
             title="Laporkan Masalah"
-            style={{width: 50, height: 50}}
-            styleContainer={{paddingHorizontal: 10}}
+            style={{
+              width: responsiveScreenWidth(12),
+              height: responsiveScreenHeight(6.8),
+            }}
+            styleContainer={{paddingHorizontal: 12}}
           />
           <ContainerChildUserProfile
             source={require('../../assets/Icons/logout.png')}
             title="Logout Account"
-            style={{width: 23, height: 24}}
-            styleContainer={{paddingLeft: 25}}
+            style={{
+              width: responsiveScreenWidth(7),
+              height: responsiveScreenHeight(5),
+              resizeMode: 'contain',
+            }}
+            styleContainer={{paddingLeft: responsiveScreenWidth(4)}}
           />
         </View>
       </View>
@@ -87,12 +108,12 @@ const Profile = ({navigation}) => {
 const styles = StyleSheet.create({
   Container_Hijau: {
     width: '100%',
-    height: '33%',
+    height: '30%',
     zIndex: 3,
     backgroundColor: '#008C74',
   },
   backAndTitle: {
-    marginTop: 35,
+    marginTop: responsiveScreenHeight(6),
     // backgroundColor: 'red',
     flexDirection: 'row',
     alignItems: 'center',
@@ -100,7 +121,7 @@ const styles = StyleSheet.create({
   back: {
     width: '20%',
     // backgroundColor: 'green',
-    paddingLeft: 20,
+    paddingLeft: responsiveScreenWidth(6),
   },
   Title: {
     alignItems: 'center',
@@ -122,8 +143,8 @@ const styles = StyleSheet.create({
   personalData: {
     width: '85%',
     position: 'absolute',
-    bottom: -100,
-    height: 200,
+    bottom: responsiveScreenHeight(-13),
+    height: responsiveScreenHeight(25),
     backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -140,34 +161,35 @@ const styles = StyleSheet.create({
   },
   editPersonalData: {
     height: '100%',
-    width: 50,
+    width: responsiveScreenWidth(15),
     // backgroundColor: 'yellow',
     alignItems: 'center',
-    paddingTop: 10,
+    paddingLeft: responsiveScreenWidth(2),
+    paddingTop: responsiveScreenHeight(2),
   },
   nameAndImage: {
     // backgroundColor: 'white',
     height: '100%',
     width: '70%',
     alignItems: 'center',
-    paddingTop: 15,
+    justifyContent: 'center',
   },
   imagePerson: {
-    width: 100,
-    height: 100,
+    width: responsiveScreenWidth(20),
+    height: responsiveScreenHeight(13.2),
   },
   editPersonal: {
-    width: 30,
-    height: 30,
+    width: responsiveScreenWidth(8.2),
+    height: responsiveScreenHeight(4),
   },
   nama: {
-    fontSize: 17,
+    fontSize: responsiveScreenFontSize(2),
     marginTop: 10,
     color: 'black',
     fontFamily: 'Poppins-Bold',
   },
   divisi: {
-    fontSize: 13,
+    fontSize: responsiveScreenFontSize(1.5),
     fontFamily: 'Poppins-Medium',
     color: 'black',
   },
@@ -182,6 +204,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'green',
     width: '80%',
     height: '76%',
+    paddingTop: responsiveScreenHeight(2),
+    justifyContent: 'space-around',
   },
 });
 
@@ -203,8 +227,8 @@ const ContainerChildUserProfile = ({
             backgroundColor: '#D9D9D9',
             width: '100%',
             justifyContent: 'space-between',
-            marginTop: 20,
-            height: 50,
+            // marginTop: responsiveScreenHeight(3),
+            height: responsiveScreenHeight(9),
             borderRadius: 7,
             shadowColor: '#000',
             shadowOffset: {
@@ -225,7 +249,7 @@ const ContainerChildUserProfile = ({
         <View>
           <Text
             style={{
-              fontSize: 14,
+              fontSize: responsiveScreenFontSize(1.6),
               fontFamily: 'Poppins-SemiBold',
               color: '#2F3132',
             }}>
@@ -234,7 +258,7 @@ const ContainerChildUserProfile = ({
         </View>
         {/* Icon(Optional) */}
         <View>
-          <Icon name={icon} color="black" size={20} />
+          <Icon name={icon} color="black" size={responsiveScreenWidth(5)} />
         </View>
       </View>
     </TouchableOpacity>
