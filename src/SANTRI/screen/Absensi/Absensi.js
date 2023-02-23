@@ -11,7 +11,11 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 const Absensi = ({navigation}) => {
   const [scanQrCode, setScanQrcode] = useState(false);
   const onSuccess = e => {
@@ -37,11 +41,12 @@ const Absensi = ({navigation}) => {
       {scanQrCode ? (
         <></>
       ) : (
-        <View style={{paddingLeft: 30}}>
+        <View style={{paddingLeft: responsiveScreenWidth(6)}}>
           <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-            <Image
-              source={require('../../assets/Icons/back.png')}
-              style={{width: 12.5, height: 22}}
+            <Icon
+              name="chevron-back"
+              color={'white'}
+              size={responsiveScreenWidth(8)}
             />
           </TouchableOpacity>
         </View>
@@ -62,7 +67,11 @@ const Absensi = ({navigation}) => {
           <View style={{alignItems: 'center'}}>
             <Image
               source={require('../../assets/images/Scanning.png')}
-              style={{width: 300, height: 300}}
+              style={{
+                width: responsiveScreenWidth(80),
+                resizeMode: 'contain',
+                height: responsiveScreenHeight(40),
+              }}
             />
           </View>
         )}
@@ -70,14 +79,29 @@ const Absensi = ({navigation}) => {
         {/* open Scan */}
         <View style={styles.openScan}>
           {/* Line */}
-          <View style={{alignItems: 'center', marginTop: 15}}>
+          <View
+            style={{
+              alignItems: 'center',
+              paddingTop: responsiveScreenHeight(2),
+              height: '10%',
+              // backgroundColor: 'yellow',
+            }}>
             <Image
               source={require('../../assets/Icons/line.png')}
-              style={{width: 40, height: 8}}
+              style={{
+                width: responsiveScreenWidth(12),
+                height: responsiveScreenHeight(1.1),
+                borderRadius: 20,
+              }}
             />
           </View>
           {/* Title and description */}
-          <View style={{marginLeft: 20, marginTop: 25}}>
+          <View
+            style={{
+              marginLeft: 20,
+              height: scanQrCode ? '50%' : '40%',
+              justifyContent: 'center',
+            }}>
             {scanQrCode ? (
               <Text style={styles.Title}>
                 Mohon untuk Arahkan Kamera pada barcode !
@@ -85,11 +109,19 @@ const Absensi = ({navigation}) => {
             ) : (
               <Text style={styles.Title}>Absen Dengan Scan QR Code</Text>
             )}
-            <View style={{marginTop: 10}}>
-              <Text style={{fontFamily: 'Poppins-Medium', fontSize: 13}}>
+            <View style={{marginTop: responsiveScreenHeight(1)}}>
+              <Text
+                style={{
+                  fontFamily: 'Poppins-Medium',
+                  fontSize: responsiveScreenFontSize(1.7),
+                }}>
                 Lakukan abesensi saat masuk jam pelajaran dan
               </Text>
-              <Text style={{fontFamily: 'Poppins-Medium', fontSize: 13}}>
+              <Text
+                style={{
+                  fontFamily: 'Poppins-Medium',
+                  fontSize: responsiveScreenFontSize(1.7),
+                }}>
                 Dapatkan Barcode Absensi pada mentor
               </Text>
             </View>
@@ -104,13 +136,12 @@ const Absensi = ({navigation}) => {
                   backgroundColor: 'red',
                   paddingHorizontal: 18,
                   paddingVertical: 6,
-                  marginBottom: 20,
                 }}>
                 <Text
                   style={{
                     color: 'white',
                     fontFamily: 'Poppins-SemiBoldItalic',
-                    fontSize: 15,
+                    fontSize: responsiveScreenFontSize(2),
                   }}>
                   Stop Scan ?
                 </Text>
@@ -119,7 +150,11 @@ const Absensi = ({navigation}) => {
               <TouchableOpacity onPress={() => setScanQrcode(true)}>
                 <Image
                   source={require('../../assets/Icons/imageScan.png')}
-                  style={{width: 50, height: 50}}
+                  style={{
+                    width: responsiveScreenWidth(13),
+                    resizeMode: 'contain',
+                    height: responsiveScreenHeight(7),
+                  }}
                 />
               </TouchableOpacity>
             )}
@@ -134,25 +169,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#008C74',
-    paddingTop: 50,
+    paddingTop: responsiveScreenHeight(7),
   },
 
   openScan: {
     backgroundColor: 'white',
-    height: 320,
+    height: responsiveScreenHeight(43),
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
   Title: {
-    fontSize: 18,
+    fontSize: responsiveScreenFontSize(2.2),
     fontFamily: 'Poppins-SemiBold',
     color: 'black',
   },
   iconScan: {
     // backgroundColor: 'red',
-    height: '50%',
     justifyContent: 'center',
     alignItems: 'center',
+    height: '40%',
   },
 });
 export default Absensi;
