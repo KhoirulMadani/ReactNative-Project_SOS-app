@@ -87,11 +87,11 @@ const Routers = () => {
         options={{headerShown: false}}
       /> */}
       {/* Penngurus */}
-      {/* <Stack.Screen
+      <Stack.Screen
         name="dashboardPengurus"
         component={DashboardPengurus}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="listdatasantri"
         component={Listdatasantri}
