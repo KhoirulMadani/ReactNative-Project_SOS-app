@@ -14,6 +14,7 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
   responsiveScreenFontSize,
+  responsiveWidth,
 } from 'react-native-responsive-dimensions';
 const Login = ({navigation}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -37,17 +38,22 @@ const Login = ({navigation}) => {
           <Text style={styles.textSignUp}>Sign In</Text>
         </View>
       </View>
-      {/* BODY*/}
-      <View style={styles.Container_content}>
+      {/* BODY */}
+      <View style={styles.Content}>
         {/* Form SignIn */}
         <View style={styles.formSignIn}>
           {/* Email */}
-          <View>
+          <View
+            style={{
+              // backgroundColor: 'green',
+              height: responsiveScreenHeight(10),
+              justifyContent: 'center',
+            }}>
             <Text style={styles.textTiltle}>Email</Text>
             <View style={styles.TextInput}>
               <Icon
                 name="email-outline"
-                size={26}
+                size={responsiveScreenWidth(7)}
                 color={'#999999'}
                 style={{marginTop: 15}}
               />
@@ -57,74 +63,89 @@ const Login = ({navigation}) => {
               />
             </View>
           </View>
-          {/* Kata Sandi */}
-          <View>
-            <Text style={styles.textTiltle}>Kata Sandi</Text>
-            <View style={styles.TextInput2}>
+          {/* Password */}
+          <View
+            style={{
+              // backgroundColor: 'green',
+              height: responsiveScreenHeight(10),
+              justifyContent: 'center',
+            }}>
+            <Text style={styles.textTiltle}>Password</Text>
+            <View style={styles.TextInputPW}>
               <Icon
-                name="lock-outline"
-                size={29}
+                onPress={() => {
+                  setSecureTextEntry(!secureTextEntry);
+                }}
+                name="lock"
+                size={responsiveScreenWidth(7)}
                 color={'#999999'}
                 style={{marginTop: 15}}
               />
               <TextInput
-                style={styles.STextInput}
                 secureTextEntry={secureTextEntry}
+                style={styles.STextInput}
+                underlineColorAndroid="transparent"
               />
-
               <TouchableOpacity
                 onPress={() => {
                   setSecureTextEntry(!secureTextEntry);
                 }}>
-                <View
-                  style={{
-                    backgroundColor: 'white',
-                    alignItems: 'flex-end',
-                    justifyContent: 'center',
-                    width: 50,
-                    height: 40,
-                    top: 10,
-                  }}>
-                  <Icon name="eye-off-outline" size={26} color={'#999999'} />
-                </View>
+                <Icon
+                  name="eye-outline"
+                  size={responsiveScreenWidth(7)}
+                  color={'#999999'}
+                  style={{marginTop: 15}}
+                />
               </TouchableOpacity>
             </View>
           </View>
         </View>
-        {/* VIEW 2 */}
-        {/* Remember Me */}
-        {/* <View style={styles.rememberMe}>
-          <CheckBox
-            disabled={false}
-            value={toggleCheckBox}
-            onValueChange={newValue => {
-              setToggleCheckBox(newValue);
-            }}
-            tintColors={{true: '#008C74', false: '#999999'}}
-          />
-          <Text style={styles.textRememberMe}>Remember Me !</Text>
-        </View> */}
-        {/* Button */}
-        {/* <TouchableOpacity onPress={() => navigation.replace('dashboard')}>
-          <View style={styles.button_masuk}>
-            <Text style={styles.textbtn}>Sign in</Text>
+        {/* View Button Action */}
+        <View style={styles.ViewBTN}>
+          {/* Rememeber Me */}
+          <View style={styles.viewRemember}>
+            <CheckBox
+              disabled={false}
+              value={toggleCheckBox}
+              onValueChange={newValue => {
+                setToggleCheckBox(newValue);
+              }}
+              tintColors={{true: '#008C74', false: '#999999'}}
+            />
+            <Text
+              style={{
+                color: '#008C74',
+                fontFamily: 'Poppins-SemiBold',
+                fontSize: responsiveScreenFontSize(1.7),
+              }}>
+              Remember Me !
+            </Text>
           </View>
-        </TouchableOpacity> */}
+          {/* Sign IN */}
+          <View style={styles.viewTombol}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('dashboard')}>
+              <Text style={styles.textSignIn}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
+          {/* Forget Password */}
+          <View style={styles.viewForget}>
+            <TouchableOpacity>
+              <Text style={styles.textForget}>Forget Password ? </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        {/* View Buat Akun */}
+        <View style={styles.viewSignUp}>
+          <Text style={styles.textBuatAkun}>Belum Punya Akun ?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('register')}>
+            <Text style={styles.textDaftar}>Daftar !</Text>
 
-        {/* lupa akun and blm punya akun */}
-        {/* <View style={{left: 100}}>
-          <TouchableOpacity>
-            <Text style={styles.textLupaAkun}>Lupa Email / Kata sandi ?</Text>
           </TouchableOpacity>
-        </View> */}
+        </View>
       </View>
-      {/* View 3  */}
-      {/* `<View style={styles.View_3}>
-        <Text style={styles.textDaftarAkun}>Belum punya akun ?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('register')}>
-          <Text style={styles.textDaftar}>Daftar</Text>
-        </TouchableOpacity>
-      </View>` */}
+
     </View>
   );
 };
@@ -136,7 +157,7 @@ const styles = StyleSheet.create({
   },
   Header: {
     width: '100%',
-    height: responsiveScreenHeight(35),
+    height: responsiveScreenHeight(28),
     backgroundColor: '#008C74',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -169,36 +190,44 @@ const styles = StyleSheet.create({
     color: 'white',
     top: 10,
   },
-  Container_content: {
+  Content: {
     backgroundColor: 'white',
-    height: '100%',
-    width: '100%',
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    paddingTop: 15,
-    padding: 5,
-    bottom: 30,
+    height: responsiveScreenHeight(100),
+    borderTopRightRadius: responsiveWidth(10),
+    borderTopLeftRadius: responsiveWidth(10),
+    bottom: responsiveScreenHeight(4),
   },
   formSignIn: {
     justifyContent: 'center',
-    top: 50,
-    // backgroundColor: 'red',
-    height: 260,
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    top: responsiveScreenHeight(1),
+    // backgroundColor: 'yellow',
+    height: responsiveScreenHeight(30),
+    justifyContent: 'space-evenly',
+    padding: 20,
   },
   textTiltle: {
     color: '#999999',
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 17,
+    fontSize: responsiveScreenFontSize(1.5),
+    top: responsiveScreenHeight(2),
   },
   TextInput: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: '100%',
     // backgroundColor: 'red',
     borderBottomColor: '#999999',
-    borderBottomWidth: 2,
+    borderBottomWidth: responsiveScreenWidth(0.5),
+    zIndex: -1,
+    height: responsiveScreenHeight(8),
+  },
+  TextInputPW: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // backgroundColor: 'red',
+    borderBottomColor: '#999999',
+    borderBottomWidth: responsiveScreenWidth(0.5),
+
+    height: responsiveScreenHeight(8),
   },
   STextInput: {
     // backgroundColor: 'yellow',
@@ -206,65 +235,70 @@ const styles = StyleSheet.create({
     left: 5,
     color: 'black',
     width: '85%',
-    height: 60,
+    height: responsiveScreenHeight(10),
     fontFamily: 'Poppins-SemiBold',
   },
-  TextInput2: {
+  ViewBTN: {
+    // backgroundColor: 'blue',
+    height: responsiveScreenHeight(25),
+    justifyContent: 'space-between',
+  },
+  viewRemember: {
+    // backgroundColor: 'green',
     flexDirection: 'row',
     alignItems: 'center',
-    width: '88%',
-    borderBottomColor: '#999999',
-    borderBottomWidth: 2,
-    // backgroundColor: 'red',
+    paddingLeft: responsiveScreenWidth(4),
+    height: responsiveScreenHeight(5),
   },
-  View_2: {
-    height: 240,
-    // backgroundColor: 'purple',
-    justifyContent: 'space-around',
+  viewTombol: {
+    // backgroundColor: 'yellow',
     alignItems: 'center',
-    top: 50,
+    justifyContent: 'center',
+    height: responsiveScreenHeight(10),
   },
-  rememberMe: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    left: -140,
-    bottom: 20,
-  },
-  textRememberMe: {
-    marginLeft: 5,
-    color: '#008C74',
-    fontFamily: 'Poppins-SemiBold',
-  },
-  button_masuk: {
-    borderRadius: 10,
+  button: {
     backgroundColor: '#008C74',
-    width: 350,
-    height: 55,
     justifyContent: 'center',
     alignItems: 'center',
+    width: responsiveScreenWidth(90),
+    height: responsiveScreenHeight(6.5),
+    borderRadius: responsiveScreenWidth(3),
   },
-  textbtn: {
-    fontSize: 20,
-    fontFamily: 'Poppins-Bold',
+  textSignIn: {
     color: 'white',
+    fontFamily: 'Poppins-Bold',
+    fontSize: responsiveScreenFontSize(3),
   },
-  textLupaAkun: {
+  viewForget: {
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    height: responsiveScreenHeight(5),
+    paddingRight: responsiveScreenWidth(10),
+  },
+  textForget: {
+    fontSize: responsiveScreenFontSize(1.7),
     color: '#999999',
     fontFamily: 'Poppins-SemiBold',
   },
-  View_3: {
-    marginTop: 180,
+  viewSignUp: {
+    // backgroundColor: 'yellow',
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
+    height: responsiveScreenHeight(6),
+    top: responsiveScreenHeight(8),
   },
-  textDaftarAkun: {
+  textBuatAkun: {
+    fontSize: responsiveScreenFontSize(1.7),
     color: '#999999',
     fontFamily: 'Poppins-SemiBold',
   },
   textDaftar: {
-    left: 10,
     color: '#008C74',
+    fontSize: responsiveScreenFontSize(1.7),
     fontFamily: 'Poppins-SemiBold',
+    left: responsiveScreenWidth(2),
   },
 });
 export default Login;
