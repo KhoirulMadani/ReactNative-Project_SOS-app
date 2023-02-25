@@ -9,7 +9,12 @@ import {
 } from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
+import Icon from 'react-native-vector-icons/Ionicons';
 const Kurikulum = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
@@ -21,21 +26,36 @@ const Kurikulum = ({navigation}) => {
       />
       {/* Header */}
       <ImageBackground
-        source={require('../../assets/images/imagekurikulum.png')}
-        style={{width: '100%', height: 250, paddingTop: 30}}>
+        source={require('../../assets/images/backgroundImageKurikulum.png')}
+        style={{
+          width: responsiveScreenWidth(100),
+          height: responsiveScreenHeight(35),
+          paddingTop: 30,
+        }}>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            marginLeft: 20,
+            marginLeft: responsiveScreenWidth(5),
           }}>
           <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-            <Image
-              source={require('../../assets/Icons/back.png')}
-              style={{width: 14.5, height: 24.5}}
+            <Icon
+              name="chevron-back"
+              color={'white'}
+              size={responsiveScreenWidth(8)}
             />
           </TouchableOpacity>
           <Text style={[styles.Title]}>Kurikulum</Text>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Image
+            source={require('../../assets/images/imageKurikulum.png')}
+            style={{
+              resizeMode: 'contain',
+              width: responsiveScreenWidth(90),
+              height: responsiveScreenHeight(23),
+            }}
+          />
         </View>
       </ImageBackground>
       {/* Title Daftar materi */}
@@ -74,19 +94,19 @@ const Kurikulum = ({navigation}) => {
 
 const styles = StyleSheet.create({
   Title: {
-    marginLeft: 20,
-    fontSize: 20,
+    marginLeft: responsiveScreenWidth(3),
+    fontSize: responsiveScreenFontSize(2.4),
     fontFamily: 'Poppins-SemiBold',
     color: 'white',
     top: 2,
   },
   Container_daftar_Materi: {
     // backgroundColor: 'red',
-    paddingLeft: 20,
-    paddingTop: 20,
+    paddingLeft: responsiveScreenWidth(7),
+    paddingVertical: responsiveScreenHeight(2),
   },
   text_daftarMateri: {
-    fontSize: 18,
+    fontSize: responsiveScreenFontSize(2.2),
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
     letterSpacing: 0.8,
@@ -106,7 +126,7 @@ const DaftarMateri = ({number, namaMateri, style}) => {
       style={[
         style,
         {
-          padding: 20,
+          padding: responsiveScreenWidth(4),
           borderRadius: 15,
           flexDirection: 'row',
           backgroundColor: '#008C74',
@@ -118,7 +138,6 @@ const DaftarMateri = ({number, namaMateri, style}) => {
           },
           shadowOpacity: 0.27,
           shadowRadius: 4.65,
-
           elevation: 6,
         },
       ]}>
@@ -127,16 +146,18 @@ const DaftarMateri = ({number, namaMateri, style}) => {
           alignItems: 'center',
           borderWidth: 2,
           borderRadius: 15,
-          paddingHorizontal: 17,
-          paddingVertical: 5,
+          paddingHorizontal: responsiveScreenWidth(5),
+          paddingVertical: responsiveScreenHeight(0.4),
           backgroundColor: 'white',
         }}>
-        <Text style={{color: 'black'}}>Pekan</Text>
+        <Text style={{color: 'black', fontSize: responsiveScreenFontSize(1.8)}}>
+          Pekan
+        </Text>
         <Text style={{color: 'black'}}>{number}</Text>
       </View>
       <View
         style={{
-          width: '82%',
+          width: '78%',
           //   backgroundColor: 'purple',
           justifyContent: 'center',
           alignItems: 'center',
@@ -144,7 +165,7 @@ const DaftarMateri = ({number, namaMateri, style}) => {
         <Text
           style={{
             fontFamily: 'PortLligatSans-Regular',
-            fontSize: 18,
+            fontSize: responsiveScreenFontSize(2.3),
             color: 'white',
           }}>
           {namaMateri}

@@ -10,7 +10,11 @@ import {
 import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 // Moment Time
 import localization from 'moment/locale/id';
 moment.updateLocale('id', localization);
@@ -364,13 +368,27 @@ const DataAbsensi = ({navigation}) => {
       />
       {/* Header */}
       <ImageBackground
-        source={require('../../assets/images/Header.png')}
-        style={{width: '100%', height: 250}}>
+        source={require('../../assets/images/backgroundDataAbsensi.png')}
+        style={{width: '100%', height: responsiveScreenHeight(35)}}>
         <View style={styles.Container_navigasiBack}>
           <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-            <Icon name="chevron-back" size={35} color="black" />
+            <Icon
+              name="chevron-back"
+              size={responsiveScreenWidth(8)}
+              color="black"
+            />
           </TouchableOpacity>
           <Text style={styles.Title}>Data Absensi</Text>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Image
+            source={require('../../assets/images/imageDataAbsensi.png')}
+            style={{
+              resizeMode: 'contain',
+              width: responsiveScreenWidth(90),
+              height: responsiveScreenHeight(23),
+            }}
+          />
         </View>
       </ImageBackground>
 
@@ -383,7 +401,11 @@ const DataAbsensi = ({navigation}) => {
             <View>
               <Image
                 source={require('../../assets/Icons/buttonslidekiri.png')}
-                style={{width: 38, height: 33}}
+                style={{
+                  width: responsiveScreenWidth(10),
+                  resizeMode: 'contain',
+                  height: responsiveScreenHeight(5),
+                }}
               />
             </View>
           </TouchableOpacity>
@@ -391,7 +413,7 @@ const DataAbsensi = ({navigation}) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
-              width: 150,
+              width: responsiveScreenWidth(20),
             }}>
             <Text style={[styles.Bulan]}>{Months[selectedMonth]}</Text>
             <Text style={[styles.Tahun]}>{Year}</Text>
@@ -402,14 +424,19 @@ const DataAbsensi = ({navigation}) => {
             <View>
               <Image
                 source={require('../../assets/Icons/buttonslidekanan.png')}
-                style={{width: 38, height: 33}}
+                style={{
+                  width: responsiveScreenWidth(10),
+                  resizeMode: 'contain',
+                  height: responsiveScreenHeight(5),
+                }}
               />
             </View>
           </TouchableOpacity>
         </View>
       </View>
       {/* Tanggal */}
-      <View style={{alignItems: 'center', marginTop: 10}}>
+      <View
+        style={{alignItems: 'center', marginTop: responsiveScreenHeight(2)}}>
         <View style={[styles.ContainerTanggal, {}]}>
           {dummyResponse.data[Months[selectedMonth]].map((v, i) => {
             let color = null;
@@ -426,7 +453,12 @@ const DataAbsensi = ({navigation}) => {
               <View
                 key={i}
                 style={[styles.perTanggal, {backgroundColor: color}]}>
-                <Text style={{color: 'black', fontSize: 15, fontWeight: '900'}}>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontSize: responsiveScreenFontSize(2),
+                    fontWeight: '900',
+                  }}>
                   {v.date}
                 </Text>
               </View>
@@ -449,65 +481,65 @@ const DataAbsensi = ({navigation}) => {
 const styles = StyleSheet.create({
   Container_navigasiBack: {
     flexDirection: 'row',
-    marginTop: 35,
-    marginLeft: 25,
+    marginTop: responsiveScreenHeight(5),
+    marginLeft: responsiveScreenWidth(5),
     alignItems: 'center',
   },
   Title: {
     color: 'black',
-    marginLeft: 15,
-    fontSize: 20,
+    marginLeft: responsiveScreenWidth(3),
+    fontSize: responsiveScreenFontSize(2.2),
     fontFamily: 'Poppins-Bold',
   },
   NavigasiBulan: {
     flexDirection: 'row',
     alignItems: 'center',
     // backgroundColor: 'red',
-    marginTop: 30,
+    marginTop: responsiveScreenHeight(3),
     width: '80%',
     justifyContent: 'space-around',
   },
   Bulan: {
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(2.2),
     fontFamily: 'Poppins-Bold',
     color: 'black',
   },
   Tahun: {
-    fontSize: 20,
-    marginLeft: 15,
+    fontSize: responsiveScreenFontSize(2.2),
+    marginLeft: responsiveScreenWidth(3),
     fontFamily: 'Poppins-Bold',
     color: 'black',
   },
   ContainerTanggal: {
     // backgroundColor: 'red',
     width: '95%',
-    height: 250,
+    height: responsiveScreenHeight(31),
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
   perTanggal: {
-    width: 30,
-    height: 30,
+    width: responsiveScreenWidth(7.2),
+    height: responsiveScreenHeight(4),
     borderRadius: 8,
     justifyContent: 'center',
-    marginLeft: 20,
-    marginTop: 20,
+    marginLeft: responsiveScreenWidth(5),
+    marginTop: responsiveScreenHeight(2),
     alignItems: 'center',
   },
   Text_Keterangan: {
-    marginLeft: 30,
-    marginTop: 20,
+    marginLeft: responsiveScreenWidth(9),
+    marginTop: responsiveScreenHeight(2),
     fontFamily: 'Poppins-SemiBold',
     color: 'black',
-    fontSize: 15,
+    fontSize: responsiveScreenFontSize(2),
   },
   Container_Keterangan: {
     backgroundColor: '#D9D9D9',
     borderRadius: 10,
-    marginTop: 5,
+    marginTop: responsiveScreenHeight(1),
     width: '85%',
-    height: 80,
-    marginLeft: 30,
+    height: '10%',
+    marginLeft: responsiveScreenWidth(7),
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -520,17 +552,36 @@ const Keterangan = ({color, text}) => {
         flexDirection: 'row',
         // backgroundColor: 'green',
         width: '45%',
-        height: 30,
-        marginTop: 5,
-        marginLeft: 5,
+        height: responsiveScreenHeight(3),
+        marginTop: responsiveScreenHeight(1.5),
+        marginLeft: responsiveScreenWidth(2),
         alignItems: 'center',
       }}>
       <View
         style={[
-          {width: 20, height: 20, backgroundColor: color, borderRadius: 20},
+          {
+            width: responsiveScreenWidth(5),
+            height: responsiveScreenHeight(2.6),
+            backgroundColor: color,
+            borderRadius: 20,
+          },
         ]}></View>
-      <Text style={{marginLeft: 5, color: 'black'}}>:</Text>
-      <Text style={{marginLeft: 5, color: 'black'}}>{text}</Text>
+      <Text
+        style={{
+          marginLeft: responsiveScreenWidth(2),
+          color: 'black',
+          fontSize: responsiveScreenFontSize(1.5),
+        }}>
+        :
+      </Text>
+      <Text
+        style={{
+          marginLeft: responsiveScreenWidth(2),
+          color: 'black',
+          fontSize: responsiveScreenFontSize(1.5),
+        }}>
+        {text}
+      </Text>
     </View>
   );
 };

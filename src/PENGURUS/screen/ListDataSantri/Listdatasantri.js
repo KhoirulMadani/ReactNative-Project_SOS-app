@@ -2,7 +2,12 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {ScrollView} from 'react-native';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+  useResponsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
 const Listdatasantri = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
@@ -11,14 +16,22 @@ const Listdatasantri = ({navigation}) => {
         <View>
           <TouchableOpacity
             onPress={() => navigation.navigate('dashboardPengurus')}>
-            <Icon name="chevron-back" size={30} color="black" />
+            <Icon
+              name="chevron-back"
+              size={responsiveScreenWidth(8)}
+              color="black"
+            />
           </TouchableOpacity>
         </View>
         {/* image */}
         <View style={styles.containerImage}>
           <Image
             source={require('../../assets/Images/header2.png')}
-            style={{width: 200, height: 200}}
+            style={{
+              width: responsiveScreenWidth(60),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(60),
+            }}
           />
         </View>
       </View>
@@ -27,7 +40,7 @@ const Listdatasantri = ({navigation}) => {
         <Text style={styles.Title}>List data santri</Text>
       </View>
       {/* container santri */}
-      <ScrollView style={{marginTop: 10}}>
+      <ScrollView style={{marginTop: 10}} showsVerticalScrollIndicator={false}>
         <View
           style={{
             // backgroundColor: 'red',
@@ -36,6 +49,7 @@ const Listdatasantri = ({navigation}) => {
             alignItems: 'center',
           }}>
           <ContainerSantri
+            onPress={() => navigation.navigate('detaildatasantri')}
             source={require('../../assets/Images/person.png')}
             namaSantri="Farhan mahendra"
           />
@@ -68,38 +82,38 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#D9D9D9',
     width: '100%',
-    height: 300,
+    height: responsiveScreenHeight(40),
     paddingHorizontal: 20,
-    paddingTop: 35,
+    paddingTop: responsiveScreenHeight(5),
   },
   containerImage: {
     // backgroundColor: 'green',
     width: '100%',
-    height: '85%',
+    height: '86%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   ContainerTitle: {
     // backgroundColor: 'red',
-    marginTop: 20,
+    marginTop: responsiveScreenHeight(3),
     paddingLeft: 30,
   },
   Title: {
-    fontSize: 17,
+    fontSize: responsiveScreenFontSize(2.5),
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
   },
 });
-const ContainerSantri = ({source, namaSantri}) => {
+const ContainerSantri = ({source, namaSantri, onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={{
           flexDirection: 'row',
           backgroundColor: '#008C74',
           width: '90%',
-          marginTop: 20,
-          height: 80,
+          marginTop: responsiveScreenHeight(2.5),
+          height: responsiveScreenHeight(11),
           alignItems: 'center',
           paddingLeft: 10,
           borderRadius: 14,
@@ -116,13 +130,19 @@ const ContainerSantri = ({source, namaSantri}) => {
         <View
           style={{
             backgroundColor: 'white',
-            width: 90,
+            width: responsiveScreenWidth(25),
             alignItems: 'center',
-            height: 60,
+            height: responsiveScreenHeight(8),
             borderRadius: 10,
             justifyContent: 'flex-end',
           }}>
-          <Image source={source} style={{width: 55, height: 55}} />
+          <Image
+            source={source}
+            style={{
+              width: responsiveScreenWidth(15.5),
+              height: responsiveScreenHeight(7.5),
+            }}
+          />
         </View>
         <View
           style={{
@@ -136,7 +156,7 @@ const ContainerSantri = ({source, namaSantri}) => {
               fontFamily: 'Poppins-BoldItalic',
               letterSpacing: 0.5,
               color: 'white',
-              fontSize: 15,
+              fontSize: responsiveScreenFontSize(2),
             }}>
             {namaSantri}
           </Text>

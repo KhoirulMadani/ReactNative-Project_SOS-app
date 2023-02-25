@@ -10,7 +10,11 @@ import React, {useState, useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PieChart from 'react-native-pie-chart';
-
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from 'react-native-responsive-dimensions';
 const PersentaseAbsen = ({navigation}) => {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const Year = new Date().getFullYear();
@@ -28,7 +32,7 @@ const PersentaseAbsen = ({navigation}) => {
     'November',
     'Desember',
   ];
-  const widthAndHeight = 200;
+  const widthAndHeight = responsiveScreenHeight(23);
 
   const sliceColor = ['#23DC1F', 'red', 'yellow', '#3F9EE2'];
   const DataBulanan = {
@@ -102,17 +106,41 @@ const PersentaseAbsen = ({navigation}) => {
       <StatusBar backgroundColor={'transparent'} translucent />
       {/* Header */}
       <ImageBackground
-        source={require('../../assets/images/headerPersentase.png')}
-        style={{width: '100%', height: 300}}>
+        source={require('../../assets/images/backgroundPersentase.png')}
+        style={{width: '100%', height: responsiveScreenHeight(39)}}>
         <View style={styles.viewTitle}>
           <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
-            <Icon name="chevron-back" color={'white'} size={35} />
+            <Icon
+              name="chevron-back"
+              color={'white'}
+              size={responsiveScreenWidth(8)}
+            />
           </TouchableOpacity>
           <Text style={styles.judul}>Persentase Absen</Text>
         </View>
+        {/* Image persentase */}
+        <View
+          style={{
+            alignItems: 'center',
+            // backgroundColor: 'red',
+            marginTop: responsiveScreenHeight(1),
+          }}>
+          <Image
+            source={require('../../assets/images/imagePersentase.png')}
+            style={{
+              resizeMode: 'cover',
+              width: responsiveScreenWidth(45),
+              height: responsiveScreenHeight(35),
+            }}
+          />
+        </View>
       </ImageBackground>
       {/* Title */}
-      <View style={{marginLeft: 20, marginTop: 20}}>
+      <View
+        style={{
+          marginLeft: responsiveScreenWidth(5),
+          marginTop: responsiveScreenHeight(4),
+        }}>
         <Text style={styles.Title}>Persentase Absen Perbulan :</Text>
       </View>
       {/* navigasi bulan*/}
@@ -121,7 +149,11 @@ const PersentaseAbsen = ({navigation}) => {
           alignItems: 'center',
           // backgroundColor: 'red',
         }}>
-        <View style={[styles.NavigasiBulan, {marginBottom: 20}]}>
+        <View
+          style={[
+            styles.NavigasiBulan,
+            {marginBottom: responsiveScreenHeight(1)},
+          ]}>
           <TouchableOpacity
             onPress={() => {
               setSelectedMonth(selectedMonth - 1);
@@ -130,7 +162,11 @@ const PersentaseAbsen = ({navigation}) => {
             <View>
               <Image
                 source={require('../../assets/Icons/buttonslidekiri.png')}
-                style={{width: 38, height: 33}}
+                style={{
+                  width: responsiveScreenWidth(9.5),
+                  height: responsiveScreenHeight(4.5),
+                  resizeMode: 'contain',
+                }}
               />
             </View>
           </TouchableOpacity>
@@ -138,7 +174,8 @@ const PersentaseAbsen = ({navigation}) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
-              width: 150,
+              width: responsiveScreenWidth(35),
+              // backgroundColor: 'red',
             }}>
             <Text style={[styles.Bulan]}>{Months[selectedMonth]}</Text>
             <Text style={[styles.Tahun]}>{Year}</Text>
@@ -151,7 +188,11 @@ const PersentaseAbsen = ({navigation}) => {
             <View>
               <Image
                 source={require('../../assets/Icons/buttonslidekanan.png')}
-                style={{width: 38, height: 33}}
+                style={{
+                  width: responsiveScreenWidth(9.5),
+                  height: responsiveScreenHeight(4.5),
+                  resizeMode: 'contain',
+                }}
               />
             </View>
           </TouchableOpacity>
@@ -164,7 +205,8 @@ const PersentaseAbsen = ({navigation}) => {
           flexDirection: 'row',
           height: '30%',
           alignItems: 'center',
-          paddingLeft: 20,
+          justifyContent: 'space-around',
+          paddingLeft: 10,
         }}>
         <PieChart
           widthAndHeight={widthAndHeight}
@@ -182,7 +224,7 @@ const PersentaseAbsen = ({navigation}) => {
             height: '80%',
             alignItems: 'center',
             justifyContent: 'center',
-            bottom: 13,
+            bottom: responsiveScreenHeight(1),
           }}>
           <Persen nilai={hasilpersentase[0]} backgroundColor={'#23DC1F'} />
           <Persen nilai={hasilpersentase[1]} backgroundColor={'red'} />
@@ -204,35 +246,36 @@ const styles = StyleSheet.create({
   viewTitle: {
     flexDirection: 'row',
     alignItems: 'center',
-    top: 30,
+    top: responsiveScreenHeight(5),
     left: 20,
+    zIndex: 2,
   },
   judul: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(2),
     left: 10,
   },
   Title: {
     fontFamily: 'Poppins-Bold',
-    fontSize: 21,
+    fontSize: responsiveScreenFontSize(2),
     color: 'black',
   },
   NavigasiBulan: {
     flexDirection: 'row',
     alignItems: 'center',
     // backgroundColor: 'red',
-    marginTop: 30,
+    marginTop: responsiveScreenHeight(1.5),
     width: '80%',
     justifyContent: 'space-around',
   },
   Bulan: {
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(2),
     fontFamily: 'Poppins-Bold',
     color: 'black',
   },
   Tahun: {
-    fontSize: 20,
+    fontSize: responsiveScreenFontSize(2),
     marginLeft: 15,
     fontFamily: 'Poppins-Bold',
     color: 'black',
@@ -240,10 +283,10 @@ const styles = StyleSheet.create({
   Container_Keterangan: {
     backgroundColor: '#D9D9D9',
     borderRadius: 10,
-    marginTop: 5,
+    marginTop: responsiveScreenHeight(1),
     width: '85%',
-    height: 80,
-    marginLeft: 30,
+    paddingVertical: responsiveScreenHeight(0.2),
+    marginLeft: responsiveScreenWidth(8),
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -255,20 +298,33 @@ const Persen = ({backgroundColor, nilai}) => {
     <View
       style={{
         flexDirection: 'row',
-        marginTop: 20,
+        alignItems: 'center',
+        marginTop: responsiveScreenHeight(1.2),
         // backgroundColor: 'gray',
-        width: 60,
+        width: responsiveScreenWidth(17),
       }}>
       <View
         style={{
           backgroundColor: backgroundColor,
-          width: 20,
-          height: 20,
+          width: responsiveScreenWidth(4),
+          height: responsiveScreenHeight(2.2),
         }}></View>
-      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 3, color: 'black'}}>
+      <Text
+        style={{
+          fontFamily: 'Poppins-Bold',
+          fontSize: responsiveScreenFontSize(1.7),
+          marginLeft: 3,
+          color: 'black',
+        }}>
         :
       </Text>
-      <Text style={{fontFamily: 'Poppins-Bold', marginLeft: 5, color: 'black'}}>
+      <Text
+        style={{
+          fontFamily: 'Poppins-Bold',
+          marginLeft: 5,
+          color: 'black',
+          fontSize: responsiveScreenFontSize(1.7),
+        }}>
         {nilai} %
       </Text>
     </View>
@@ -289,15 +345,21 @@ const Keterangan = ({backgroundColor, text}) => {
       }}>
       <View
         style={{
-          width: 20,
-          height: 20,
+          width: responsiveScreenWidth(5),
+          height: responsiveScreenHeight(2.5),
           backgroundColor: backgroundColor,
           borderRadius: 20,
         }}></View>
       <Text style={{marginLeft: 5, fontFamily: 'Poppins-Bold', color: 'black'}}>
         :
       </Text>
-      <Text style={{marginLeft: 5, fontFamily: 'Poppins-Bold', color: 'black'}}>
+      <Text
+        style={{
+          marginLeft: 5,
+          fontFamily: 'Poppins-Bold',
+          color: 'black',
+          fontSize: responsiveScreenFontSize(1.2),
+        }}>
         {text}
       </Text>
     </View>
