@@ -24,7 +24,7 @@ export const Dataglobal = createContext();
 
 const Routers = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="register">
       {/* <Stack.Screen
         name="splash"
         component={Splash}
