@@ -18,6 +18,7 @@ import PersonalData from '../../screen/Profile/personal data';
 // Pengurus
 import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboard';
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
+import DetailDataSantri from '../../../PENGURUS/screen/ListDataSantri/detailDataSantri';
 
 // State management
 export const Dataglobal = createContext();
@@ -30,7 +31,7 @@ const Routers = () => {
         component={Splash}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="login"
         component={Login}
         options={{headerShown: false}}
@@ -84,16 +85,21 @@ const Routers = () => {
         name="personaldata"
         component={PersonalData}
         options={{headerShown: false}}
-      />
+      /> */}
       {/* Penngurus */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="dashboardPengurus"
         component={DashboardPengurus}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="listdatasantri"
         component={Listdatasantri}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="detaildatasantri"
+        component={DetailDataSantri}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
