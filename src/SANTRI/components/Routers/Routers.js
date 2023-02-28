@@ -15,6 +15,7 @@ import PersentaseAbsen from '../../screen/Persentase Absen/persentaseAbsen';
 import Profile from '../../screen/Profile/Profile';
 import RequestKarya from '../../screen/RequestKarya/requestKarya';
 import PersonalData from '../../screen/Profile/personal data';
+import ProfilePengurus from '../../../PENGURUS/screen/Profile/Profile';
 // Pengurus
 import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboard';
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
@@ -31,7 +32,7 @@ const Routers = () => {
         component={Splash}
         options={{headerShown: false}}
       /> */}
-      {/* <Stack.Screen
+      <Stack.Screen
         name="login"
         component={Login}
         options={{headerShown: false}}
@@ -85,7 +86,7 @@ const Routers = () => {
         name="personaldata"
         component={PersonalData}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* Penngurus */}
       <Stack.Screen
         name="dashboardPengurus"
@@ -100,6 +101,11 @@ const Routers = () => {
       <Stack.Screen
         name="detaildatasantri"
         component={DetailDataSantri}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="profilepengurus"
+        component={ProfilePengurus}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
