@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Icon} from 'react-native-vector-icons/Icon';
+import {
+  responsiveFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
 
 const Kaldik = ({navigation}) => {
   const [selectmonth, setSelectmonth] = useState(new Date().getMonth());
@@ -217,6 +222,24 @@ const Kaldik = ({navigation}) => {
           keterangan: 'zoom meeting',
           status: false,
         },
+        {
+          date: 29,
+          day: 'senin',
+          keterangan: 'zoom meeting',
+          status: false,
+        },
+        {
+          date: 30,
+          day: 'senin',
+          keterangan: 'zoom meeting',
+          status: false,
+        },
+        {
+          date: 31,
+          day: 'senin',
+          keterangan: 'zoom meeting',
+          status: false,
+        },
       ],
       Maret: [
         {
@@ -339,25 +362,27 @@ const Kaldik = ({navigation}) => {
           </View>
         </View>
         {/* keterangan */}
-        <View style={styles.kontenKeterangan}>
-          <Text style={styles.textKeterangan}>Keterangan :</Text>
-          <ScrollView>
-            {hasil.map((value, index) => {
-              return (
-                <View key={index} style={styles.isiKeterangan}>
-                  <View style={styles.viewTanggal}>
-                    <Text style={styles.textTanggal}>{value.date}</Text>
-                    <View style={styles.viewTitikDua}>
-                      <Text style={styles.textTitikDua}>:</Text>
+        <View style={{alignItems: 'center'}}>
+          <View style={styles.kontenKeterangan}>
+            <Text style={styles.textKeterangan}>Keterangan :</Text>
+            <ScrollView style={styles.ScrollView}>
+              {hasil.map((value, index) => {
+                return (
+                  <View key={index} style={styles.isiKeterangan}>
+                    <View style={styles.viewTanggal}>
+                      <Text style={styles.textTanggal}>{value.date}</Text>
+                      <View style={styles.viewTitikDua}>
+                        <Text style={styles.textTitikDua}>:</Text>
+                      </View>
                     </View>
+                    <Text style={styles.textIsiKeterangan}>
+                      {value.keterangan}
+                    </Text>
                   </View>
-                  <Text style={styles.textIsiKeterangan}>
-                    {value.keterangan}
-                  </Text>
-                </View>
-              );
-            })}
-          </ScrollView>
+                );
+              })}
+            </ScrollView>
+          </View>
         </View>
       </View>
     </View>
@@ -389,7 +414,7 @@ const styles = StyleSheet.create({
   textheader: {
     color: 'black',
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.2),
     left: 70,
     bottom: 1,
   },
@@ -411,7 +436,7 @@ const styles = StyleSheet.create({
   pembungkusSlide: {
     // backgroundColor: 'blue',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: responsiveScreenHeight(1.5),
   },
   slideTanggal: {
     // backgroundColor: 'red',
@@ -431,15 +456,18 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   pembungkusTanggal: {
-    alignItems: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // backgroundColor: 'red',
   },
   tanggal: {
     width: '100%',
-    height: 210,
+    height: responsiveScreenHeight(30),
     padding: 2,
     alignItems: 'center',
+    // paddingLeft: responsiveScreenHeight(1.5),
     // backgroundColor: 'blue',
-    marginTop: 20,
+    marginTop: responsiveScreenHeight(1),
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
@@ -454,23 +482,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   kontenKeterangan: {
+    // paddingLeft: 25,
+    // top: 10,
+    height: responsiveScreenHeight(20),
+    width: responsiveScreenWidth(100),
     // backgroundColor: 'red',
     justifyContent: 'center',
-    paddingLeft: 25,
-    top: 10,
-    height: '42%',
-    width: '100%',
+    alignItems: 'center',
   },
   textKeterangan: {
     color: 'black',
     fontSize: 20,
     bottom: 4,
+    left: responsiveScreenWidth(-28),
     fontFamily: 'Poppins-SemiBold',
+  },
+  ScrollView: {
+    // marginTop: responsiveScreenHeight(2),
+    backgroundColor: '#008C74',
+    width: responsiveScreenWidth(90),
+    borderRadius: 10,
   },
   isiKeterangan: {
     width: '50%',
     marginLeft: 15,
     flexDirection: 'row',
+    paddingVertical: responsiveScreenWidth(1),
   },
   viewTanggal: {
     // backgroundColor: 'blue',
@@ -482,7 +519,7 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
   },
   textTanggal: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     fontFamily: 'Poppins-SemiBold',
   },
@@ -494,12 +531,12 @@ const styles = StyleSheet.create({
     left: 5,
   },
   textTitikDua: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     fontFamily: 'Poppins-SemiBold',
   },
   textIsiKeterangan: {
-    color: 'black',
+    color: 'white',
     fontSize: 15,
     left: 12,
     fontFamily: 'Poppins-SemiBold',

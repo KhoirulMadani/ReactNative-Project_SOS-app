@@ -141,11 +141,9 @@ const Login = ({navigation}) => {
           <Text style={styles.textBuatAkun}>Belum Punya Akun ?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('register')}>
             <Text style={styles.textDaftar}>Daftar !</Text>
-
           </TouchableOpacity>
         </View>
       </View>
-
     </View>
   );
 };

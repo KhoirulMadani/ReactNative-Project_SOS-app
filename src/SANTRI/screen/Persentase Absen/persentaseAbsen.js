@@ -129,7 +129,7 @@ const PersentaseAbsen = ({navigation}) => {
             source={require('../../assets/images/imagePersentase.png')}
             style={{
               resizeMode: 'cover',
-              width: responsiveScreenWidth(45),
+              width: responsiveScreenWidth(48),
               height: responsiveScreenHeight(35),
             }}
           />

@@ -15,6 +15,9 @@ import PersentaseAbsen from '../../screen/Persentase Absen/persentaseAbsen';
 import Profile from '../../screen/Profile/Profile';
 import RequestKarya from '../../screen/RequestKarya/requestKarya';
 import PersonalData from '../../screen/Profile/personal data';
+import CV from '../../screen/Profile/cv/cv';
+import Portofolio from '../../screen/Profile/Portofolio/portofolio';
+
 // Pengurus
 import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboard';
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
@@ -25,13 +28,13 @@ export const Dataglobal = createContext();
 
 const Routers = () => {
   return (
-    <Stack.Navigator initialRouteName="register">
+    <Stack.Navigator>
       {/* <Stack.Screen
         name="splash"
         component={Splash}
         options={{headerShown: false}}
       /> */}
-      {/* <Stack.Screen
+      <Stack.Screen
         name="login"
         component={Login}
         options={{headerShown: false}}
@@ -85,14 +88,24 @@ const Routers = () => {
         name="personaldata"
         component={PersonalData}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name="curicullumvitae"
+        component={CV}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="portofolio"
+        component={Portofolio}
+        options={{headerShown: false}}
+      />
       {/* Penngurus */}
       {/* <Stack.Screen
         name="dashboardPengurus"
         component={DashboardPengurus}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="listdatasantri"
         component={Listdatasantri}
         options={{headerShown: false}}
@@ -101,7 +114,7 @@ const Routers = () => {
         name="detaildatasantri"
         component={DetailDataSantri}
         options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
