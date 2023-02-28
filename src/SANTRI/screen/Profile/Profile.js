@@ -62,6 +62,7 @@ const Profile = ({navigation}) => {
       <View style={styles.ContainerPutih}>
         <View style={styles.ContainerChild}>
           <ContainerChildUserProfile
+            onPress={() => navigation.navigate('curicullumvitae')}
             source={require('../../assets/images/cv.png')}
             title="CV"
             icon={'chevron-forward'}
@@ -72,6 +73,7 @@ const Profile = ({navigation}) => {
             styleContainer={{paddingHorizontal: 12}}
           />
           <ContainerChildUserProfile
+            onPress={() => navigation.navigate('portofolio')}
             source={require('../../assets/images/portofolio.png')}
             title="Portofolio"
             icon={'chevron-forward'}
@@ -215,9 +217,10 @@ const ContainerChildUserProfile = ({
   icon,
   style,
   styleContainer,
+  onPress,
 }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={[
           styleContainer,

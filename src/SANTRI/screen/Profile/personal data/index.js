@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import Icon3 from 'react-native-vector-icons/FontAwesome';
+import {
+  responsiveFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
 
 const PersonalData = ({navigation}) => {
   return (
@@ -21,30 +26,29 @@ const PersonalData = ({navigation}) => {
         barStyle={'dark-content'}
       />
       {/* HEADER */}
-      <View>
-        <ImageBackground
-          source={require('../../../assets/images/melengkung.png')}
-          style={styles.header}>
-          <View style={styles.col1}>
-            <TouchableOpacity onPress={() => navigation.navigate('profile')}>
-              <Image
-                source={require('../../../assets/Icons/back.png')}
-                style={styles.iconback}
-              />
-            </TouchableOpacity>
-            <Text style={styles.textheader}>Personal Data</Text>
-          </View>
-          {/* foto profil */}
-          <View style={styles.PF}>
-            <TouchableOpacity>
-              <Image
-                source={require('../../../assets/Icons/tambah.png')}
-                style={styles.tambahPF}
-              />
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
+
+      <View style={styles.header}>
+        {/* title */}
+        <View style={styles.title}>
+          <TouchableOpacity onPress={() => navigation.navigate('profile')}>
+            <Image
+              source={require('../../../assets/Icons/back.png')}
+              style={styles.iconback}
+            />
+          </TouchableOpacity>
+          <Text style={styles.textheader}>Personal Data</Text>
+        </View>
+        {/* foto profil */}
+        <View style={styles.PF}>
+          <TouchableOpacity>
+            <Image
+              source={require('../../../assets/Icons/tambah.png')}
+              style={styles.tambahPF}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
+
       {/* BODY */}
       <View style={styles.isi}>
         {/* VIEW FORM */}
@@ -95,11 +99,13 @@ const PersonalData = ({navigation}) => {
           </View>
         </View>
         {/* Button */}
-        <TouchableOpacity>
-          <View style={styles.btnKirim}>
-            <Text style={styles.text3}>Simpan Perubahan</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity>
+            <View style={styles.btnKirim}>
+              <Text style={styles.text3}>Simpan Perubahan</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -113,35 +119,36 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   header: {
-    width: '100%',
-    height: 250,
-    // backgroundColor: '#008C74',
+    width: responsiveScreenWidth(100),
+    height: responsiveScreenHeight(25),
+    backgroundColor: '#008C74',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  col1: {
-    marginRight: 10,
-    width: '100%',
-    top: 25,
-    left: 10,
+  title: {
+    // backgroundColor: 'red',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    width: responsiveScreenWidth(50),
+    height: responsiveScreenHeight(5),
+    left: responsiveScreenWidth(-25),
+    top: responsiveScreenWidth(8),
   },
   iconback: {
     width: 11.04,
     height: 21,
-    left: 25,
-    top: 25,
+    top: -2.5,
   },
   textheader: {
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 20,
-    left: 70,
-    top: 2,
-    // bottom: 1,
+    fontSize: responsiveFontSize(2.3),
   },
   PF: {
     width: 148,
-    height: 146,
+    height: 148,
     backgroundColor: '#D9D9D9',
     top: 60,
     borderRadius: 100,
@@ -198,8 +205,8 @@ const styles = StyleSheet.create({
     height: 46,
     backgroundColor: '#008C74',
     borderRadius: 10,
-    marginLeft: 52,
-    bottom: 20,
+    // marginLeft: 52,
+    // bottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
