@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import {TabView, SceneMap} from 'react-native-tab-view';
@@ -19,7 +20,7 @@ import {
   useResponsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 // component tab view
-const FirstRoute = () => (
+const ContainerPersonaldata = () => (
   <ScrollView showsVerticalScrollIndicator={false}>
     <View
       style={{
@@ -72,20 +73,42 @@ const FirstRoute = () => (
     </View>
   </ScrollView>
 );
-const SecondRoute = () => (
-  <View style={{flex: 1, backgroundColor: 'white'}}></View>
+// CV
+const ContainerCV = () => (
+  <ScrollView showsVerticalScrollIndicator={false}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: 'white',
+        paddingHorizontal: responsiveScreenWidth(3),
+        paddingBottom: responsiveScreenHeight(1.5),
+      }}>
+      <CV
+        Title={'Technical Skill'}
+        isi="dghjsaghdfaghjadfsghjafdsghjdfssasssssssssssssssssss234w4ft34frwy35breerktuhrtiluyqr3iu7234578erhuif2478yf24byt24y78g34biuyfg24g78"
+      />
+      <CV
+        Title={'Pendidikan'}
+        isi="dghjsaghdfaghjadfsghjafdsghjdfssasssssssssssssssssss234w4ft34frwy35breerktuhrtiluyqr3iu7234578erhuif2478yf24byt24y78g34biuyfg24g78"
+      />
+      <CV
+        Title={'Personal background'}
+        isi="dghjsaghdfaghjadfsghjafdsghjdfssasssssssssssssssssss234w4ft34frwy35breerktuhrtiluyqr3iu7234578erhuif2478yf24byt24y78g34biuyfg24g78"
+      />
+    </View>
+  </ScrollView>
 );
 const initialCover = {width: Dimensions.get('window').width};
 // Component Utama
-const DetailDataSantri = () => {
+const DetailDataSantri = ({navigation}) => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'first', title: 'Personal data'},
     {key: 'second', title: 'CV'},
   ]);
   const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
+    first: ContainerPersonaldata,
+    second: ContainerCV,
   });
   return (
     <View style={{flex: 1}}>
@@ -94,7 +117,10 @@ const DetailDataSantri = () => {
       <View style={styles.ContainerHeader}>
         {/* back */}
         <View style={styles.containerBack}>
-          <Icon name="chevron-back" size={responsiveScreenWidth(7)} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate('listdatasantri')}>
+            <Icon name="chevron-back" size={responsiveScreenWidth(7)} />
+          </TouchableOpacity>
         </View>
         {/* name and image */}
         <View style={styles.ContainerNameImage}>
@@ -139,10 +165,12 @@ const styles = StyleSheet.create({
     // justifyContent: 'flex-end',
   },
   name: {
-    fontSize: responsiveScreenFontSize(2),
+    fontSize: responsiveScreenFontSize(2.5),
+    fontFamily: 'Poppins-Bold',
   },
   divisi: {
     fontSize: responsiveScreenFontSize(2),
+    fontFamily: 'Poppins-Medium',
   },
 });
 
@@ -150,13 +178,14 @@ const PersonalData = ({Title, source, styleimg, name}) => {
   return (
     <View
       style={{
-        marginTop: responsiveScreenHeight(3),
+        marginTop: responsiveScreenHeight(2.5),
       }}>
       <Text
         style={{
-          fontSize: responsiveScreenFontSize(2.2),
-          paddingLeft: responsiveScreenWidth(5),
+          fontSize: responsiveScreenFontSize(2),
+          paddingLeft: responsiveScreenWidth(2),
           color: 'black',
+          fontFamily: 'Poppins-SemiBoldItalic',
         }}>
         {Title}
       </Text>
@@ -165,7 +194,7 @@ const PersonalData = ({Title, source, styleimg, name}) => {
           backgroundColor: '#D9D9D9',
           borderRadius: responsiveScreenWidth(2),
           flexDirection: 'row',
-          marginTop: responsiveScreenHeight(1.5),
+          marginTop: responsiveScreenHeight(1),
           paddingVertical: responsiveScreenHeight(1),
         }}>
         <View
@@ -197,6 +226,43 @@ const PersonalData = ({Title, source, styleimg, name}) => {
             </View>
           </ScrollView>
         </View>
+      </View>
+    </View>
+  );
+};
+// component CV
+const CV = ({Title, isi}) => {
+  return (
+    <View
+      style={{
+        // backgroundColor: 'red',
+        marginTop: responsiveScreenHeight(3),
+      }}>
+      <Text
+        style={{
+          fontSize: responsiveScreenFontSize(2),
+          color: 'black',
+          fontFamily: 'Poppins-SemiBoldItalic',
+        }}>
+        {Title}
+      </Text>
+      <View
+        style={{
+          borderWidth: 1.7,
+          alignContent: 'stretch',
+          paddingHorizontal: responsiveScreenWidth(2),
+          paddingVertical: responsiveScreenHeight(0.5),
+          marginTop: responsiveScreenHeight(0.1),
+          borderRadius: responsiveScreenWidth(1.5),
+        }}>
+        <Text
+          style={{
+            fontSize: responsiveScreenFontSize(2),
+            color: 'black',
+            // lineHeight: 20,
+          }}>
+          {isi}
+        </Text>
       </View>
     </View>
   );

@@ -77,6 +77,9 @@ const DashboardPengurus = ({navigation}) => {
           text1="Request Karya"
         />
         <Fitures
+          onPress={() => {
+            navigation.navigate('profilepengurus');
+          }}
           source={require('../../assets/Icons/Profile.png')}
           styleImage={{
             width: responsiveScreenWidth(28),
