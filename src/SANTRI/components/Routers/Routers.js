@@ -15,16 +15,15 @@ import PersentaseAbsen from '../../screen/Persentase Absen/persentaseAbsen';
 import Profile from '../../screen/Profile/Profile';
 import RequestKarya from '../../screen/RequestKarya/requestKarya';
 import PersonalData from '../../screen/Profile/personal data';
-
 import CV from '../../screen/Profile/cv/cv';
 import Portofolio from '../../screen/Profile/Portofolio/portofolio';
-
 
 // Pengurus
 import ProfilePengurus from '../../../PENGURUS/screen/Profile/Profile';
 import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboard';
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
 import DetailDataSantri from '../../../PENGURUS/screen/ListDataSantri/detailDataSantri';
+import RequestKaryaPengurus from '../../../PENGURUS/screen/requestKarya/requestKaryaPengurus';
 
 // State management
 export const Dataglobal = createContext();
@@ -92,7 +91,6 @@ const Routers = () => {
         component={PersonalData}
         options={{headerShown: false}}
       />
-
       <Stack.Screen
         name="curicullumvitae"
         component={CV}
@@ -103,15 +101,12 @@ const Routers = () => {
         component={Portofolio}
         options={{headerShown: false}}
       />
-
       {/* Penngurus */}
       <Stack.Screen
-        name="dashboardPengurus"
+        name="dashboardpengurus"
         component={DashboardPengurus}
         options={{headerShown: false}}
-
-      /> */}
- 
+      />
       <Stack.Screen
         name="listdatasantri"
         component={Listdatasantri}
@@ -121,7 +116,11 @@ const Routers = () => {
         name="detaildatasantri"
         component={DetailDataSantri}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name="requestkaryapengurus"
+        component={RequestKaryaPengurus}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="profilepengurus"

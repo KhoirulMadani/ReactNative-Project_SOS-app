@@ -43,7 +43,7 @@ const Profile = ({navigation}) => {
                 source={require('../../assets/images/person.png')}
                 style={styles.imagePerson}
               />
-              <Text style={styles.nama}>Farhan Mahendra</Text>
+              <Text style={styles.nama}>Khoirul Madani</Text>
               <Text style={styles.divisi}>Mobile dev</Text>
             </View>
             <View style={styles.editPersonalData}>

@@ -96,7 +96,7 @@ const Dashboard = ({navigation}) => {
       {/* Header */}
       <View style={styles.Header}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('dashboardPengurus')}>
+          onPress={() => navigation.navigate('dashboardpengurus')}>
           <Image
             source={require('../../assets/Icons/User.png')}
             style={{

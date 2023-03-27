@@ -23,7 +23,8 @@ const Profile = ({navigation}) => {
         {/* back dan Title*/}
         <View style={styles.backAndTitle}>
           <View style={styles.back}>
-            <TouchableOpacity onPress={() => navigation.navigate('dashboard')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('dashboardpengurus')}>
               <Icon
                 name="chevron-back"
                 size={responsiveScreenWidth(8)}

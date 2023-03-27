@@ -15,7 +15,7 @@ const Listdatasantri = ({navigation}) => {
       <View style={styles.header}>
         <View>
           <TouchableOpacity
-            onPress={() => navigation.navigate('dashboardPengurus')}>
+            onPress={() => navigation.navigate('dashboardpengurus')}>
             <Icon
               name="chevron-back"
               size={responsiveScreenWidth(8)}

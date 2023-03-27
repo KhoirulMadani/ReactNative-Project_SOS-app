@@ -30,11 +30,7 @@ const Login = ({navigation}) => {
           style={styles.logoHeader}
         />
         <View style={styles.isiHeader}>
-          <Text
-            style={styles.textWelcome}
-            onPress={() => navigation.replace('dashboard')}>
-            Welcome
-          </Text>
+          <Text style={styles.textWelcome}>Welcome</Text>
           <Text style={styles.textSignUp}>Sign In</Text>
         </View>
       </View>

@@ -25,23 +25,23 @@ const DataAbsensi = ({navigation}) => {
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const Year = new Date().getFullYear();
   const Months = [
-    'Januari',
-    'Februari',
-    'Maret',
+    'January',
+    'February',
+    'March',
     'April',
-    'Mei',
-    'Juni',
-    'Juli',
-    'Agustus',
+    'May',
+    'June',
+    'July',
+    'Auguts',
     'September',
-    'Oktober',
+    'October',
     'November',
-    'Desember',
+    'December',
   ];
   const dummyResponse = {
     status: 'success',
     data: {
-      Januari: [
+      January: [
         {
           date: 1,
           day: 'senin',
@@ -282,7 +282,7 @@ const DataAbsensi = ({navigation}) => {
           out: '15:00',
         },
       ],
-      Februari: [
+      February: [
         {
           date: 1,
           status: 'Hadir',
@@ -353,6 +353,14 @@ const DataAbsensi = ({navigation}) => {
           date: 10,
           status: 'Tanpa Keterangan',
           in: 'nan',
+        },
+      ],
+      March: [
+        {
+          date: 1,
+          status: 'Hadir',
+          in: '08:00',
+          out: '15:00',
         },
       ],
     },
@@ -500,12 +508,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   Bulan: {
-    fontSize: responsiveScreenFontSize(2.2),
+    fontSize: responsiveScreenFontSize(2),
     fontFamily: 'Poppins-Bold',
     color: 'black',
   },
   Tahun: {
-    fontSize: responsiveScreenFontSize(2.2),
+    fontSize: responsiveScreenFontSize(2),
     marginLeft: responsiveScreenWidth(3),
     fontFamily: 'Poppins-Bold',
     color: 'black',

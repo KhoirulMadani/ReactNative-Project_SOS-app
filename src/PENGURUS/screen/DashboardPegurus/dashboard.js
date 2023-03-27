@@ -13,7 +13,8 @@ const DashboardPengurus = ({navigation}) => {
       {/* header */}
       <View style={styles.ContainerHeader}>
         <View style={styles.imageProfile}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('profilepengurus')}>
             <Image
               source={require('../../assets/Icons/User.png')}
               style={{
@@ -60,6 +61,7 @@ const DashboardPengurus = ({navigation}) => {
           text2={'data Santri'}
         />
         <Fitures
+          onPress={() => navigation.navigate('requestkaryapengurus')}
           source={require('../../assets/Icons/Request.png')}
           styleImage={{
             width: responsiveScreenWidth(15),

@@ -42,6 +42,9 @@ const PersentaseAbsen = ({navigation}) => {
     Februari: {
       series: [30, 0, 0, 0],
     },
+    Maret: {
+      series: [40, 10, 30, 20],
+    },
   };
 
   // Function menghitung persentase
@@ -100,6 +103,7 @@ const PersentaseAbsen = ({navigation}) => {
     fungsiPenampungnilai();
     mencari2NilaiDariDepan();
   }, [selectedMonth]);
+
   return (
     <View style={{flex: 1}}>
       {/* Status bar */}
