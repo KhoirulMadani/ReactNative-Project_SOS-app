@@ -85,7 +85,7 @@ const Absensi = ({navigation}) => {
   // Ukur Jarak
   const ukurJarak = () => {
     const jarakUserdenganAbsen = haversine(lokasiUser, lokasiAbsen);
-    const jarakYangDitentukan = 20;
+    const jarakYangDitentukan = 200;
     if (jarakUserdenganAbsen > jarakYangDitentukan) {
       Alert.alert(
         'Peringatan',
@@ -114,7 +114,7 @@ const Absensi = ({navigation}) => {
 
   // Ketika Scan
   const onSuccess = e => {
-    if (e.data === '#*PondokProgrammer$*$ukses.."') {
+    if (e.data === '#*PondokProgrammer$*$ukses..') {
       Alert.alert('Absensi Sukses');
     } else {
       Alert.alert('Absensi Gagal');

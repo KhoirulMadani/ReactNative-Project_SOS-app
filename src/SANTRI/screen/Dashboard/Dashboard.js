@@ -62,7 +62,7 @@ const Dashboard = ({navigation}) => {
     `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 09:00:00`,
   ).getTime();
   let Close_Absensi = new Date(
-    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 09:30:00`,
+    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 12:30:00`,
   ).getTime();
   // Fungsi untuk batas absensi
   function Batas_absen() {

@@ -45,6 +45,12 @@ const PersentaseAbsen = ({navigation}) => {
     Maret: {
       series: [40, 10, 30, 20],
     },
+    April: {
+      series: [40, 10, 30, 20],
+    },
+    Mei: {
+      series: [40, 10, 30, 20],
+    },
   };
 
   // Function menghitung persentase

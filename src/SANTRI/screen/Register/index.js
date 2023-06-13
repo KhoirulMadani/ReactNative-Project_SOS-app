@@ -57,28 +57,28 @@ const Register = ({navigation}) => {
   ]);
   // data dropdown pilih framework
   const [open2, setOpen2] = useState(false);
-  const [items2, setItems2] = useState([
-    {
-      label: 'React Native',
-      value: 'React Native',
-    },
-    {
-      label: 'React JS',
-      value: 'React JS',
-    },
-    {
-      label: 'Laravel',
-      value: 'Laravel',
-    },
-    {
-      label: 'Golang',
-      value: 'Golang',
-    },
-    {
-      label: 'Node JS',
-      value: 'Node JS',
-    },
-  ]);
+  // const [items2, setItems2] = useState([
+  //   {
+  //     label: 'React Native',
+  //     value: 'React Native',
+  //   },
+  //   {
+  //     label: 'React JS',
+  //     value: 'React JS',
+  //   },
+  //   {
+  //     label: 'Laravel',
+  //     value: 'Laravel',
+  //   },
+  //   {
+  //     label: 'Golang',
+  //     value: 'Golang',
+  //   },
+  //   {
+  //     label: 'Node JS',
+  //     value: 'Node JS',
+  //   },
+  // ]);
   return (
     <View style={styles.Container}>
       <StatusBar backgroundColor={'transparent'} translucent />
@@ -95,186 +95,157 @@ const Register = ({navigation}) => {
       </View>
       {/* FORM REGISTER */}
       <View style={styles.Container_content}>
-        {/* data data */}
-        <View style={styles.dataData}>
-          {/* Dropdwon pilih Jurusan */}
-          <ScrollView>
-            <View style={styles.Container_Dropdown}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}>
-                <Icon4
-                  name="clipboard"
-                  size={25}
-                  color="#999999"
-                  style={{marginRight: 10}}
-                />
-                <DropDownPicker
-                  placeholder="Pilih Jurusan"
-                  placeholderStyle={{color: '#999999'}}
-                  style={{borderColor: '#999999'}}
-                  textStyle={{
-                    fontWeight: 'bold',
-                    color: '#999999',
-                  }}
-                  labelStyle={{color: 'black'}}
-                  open={open}
-                  value={namaJurusan}
-                  items={items}
-                  setOpen={setOpen}
-                  setValue={setNamaJurusan}
-                  setItems={setItems}
-                />
-              </View>
+        {/* Dropdwon pilih Jurusan */}
+        {/* <ScrollView> */}
+        <View style={styles.container_input}>
+          <View style={styles.Container_Dropdown}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Icon4
+                name="clipboard"
+                size={25}
+                color="#999999"
+                style={{marginRight: 10}}
+              />
+              <DropDownPicker
+                placeholder="Pilih Jurusan"
+                placeholderStyle={{color: '#999999'}}
+                style={{borderColor: '#999999'}}
+                textStyle={{
+                  fontWeight: 'bold',
+                  color: '#999999',
+                }}
+                labelStyle={{color: 'black'}}
+                open={open}
+                value={namaJurusan}
+                items={items}
+                setOpen={setOpen}
+                setValue={setNamaJurusan}
+                setItems={setItems}
+              />
             </View>
-            {/* Dropdown pilih framework  */}
-            <View style={styles.Container_Dropdown2}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Icon5
-                  name="gear"
-                  size={25}
-                  color="#999999"
-                  style={{marginRight: 10}}
-                />
-                <DropDownPicker
-                  placeholder="Pilih Framework"
-                  placeholderStyle={{color: '#999999'}}
-                  style={{borderColor: '#999999'}}
-                  textStyle={{
-                    fontWeight: 'bold',
-                    color: '#999999',
-                  }}
-                  labelStyle={{color: 'black'}}
-                  open={open2}
-                  value={namaFramework}
-                  items={items2}
-                  setOpen={setOpen2}
-                  setValue={setNamaFramework}
-                  setItems={setItems2}
-                />
-              </View>
-            </View>
+          </View>
 
-            {/* Area Text Input */}
-            {/* Nama Lengkap */}
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.TextInput}>
-                <Icon3
-                  name="user-o"
-                  size={26}
-                  color="#999999"
-                  style={{marginTop: 15}}
-                />
-                <TextInput
-                  placeholder="Nama Lengkap"
-                  placeholderTextColor={'#999999'}
-                  style={styles.STextInput}
-                />
+          {/* Nama Lengkap */}
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.TextInput}>
+              <Icon3
+                name="user-o"
+                size={26}
+                color="#999999"
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                placeholder="Nama Lengkap"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
+              />
+            </View>
+          </View>
+          {/* Nomor Telepon */}
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.TextInput}>
+              <Icon2
+                name="call-outline"
+                size={26}
+                color="#999999"
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                placeholder="No Telepon"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
+              />
+            </View>
+          </View>
+          {/* Email */}
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.TextInput}>
+              <Icon
+                name="email-outline"
+                size={26}
+                color={'#999999'}
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                placeholder="Email"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
+              />
+            </View>
+          </View>
+          {/* Kata Sandi */}
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.TextInput2}>
+              <Icon
+                name="lock-outline"
+                size={29}
+                color={'#999999'}
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                placeholder="Kata Sandi"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
+                secureTextEntry={secureTextEntry}
+              />
+              <View style={{right: 20, backgroundColor: 'white'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setSecureTextEntry(!secureTextEntry);
+                  }}>
+                  <Icon
+                    name="eye-off-outline"
+                    size={26}
+                    color={'#999999'}
+                    style={{marginTop: 20}}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
-            {/* Nomor Telepon */}
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.TextInput}>
-                <Icon2
-                  name="call-outline"
-                  size={26}
-                  color="#999999"
-                  style={{marginTop: 15}}
-                />
-                <TextInput
-                  placeholder="No Telepon"
-                  placeholderTextColor={'#999999'}
-                  style={styles.STextInput}
-                />
+          </View>
+          {/* Kode Masuk */}
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.TextInput3}>
+              <Icon
+                name="lock-outline"
+                size={29}
+                color={'#999999'}
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                placeholder="Kode Masuk"
+                placeholderTextColor={'#999999'}
+                style={styles.STextInput}
+                secureTextEntry={secureTextEntry2}
+              />
+              <View style={{right: 20, backgroundColor: 'white'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setSecureTextEntry2(!secureTextEntry2);
+                  }}>
+                  <Icon
+                    name="eye-off-outline"
+                    size={26}
+                    color={'#999999'}
+                    style={{marginTop: 20}}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
-            {/* Email */}
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.TextInput}>
-                <Icon
-                  name="email-outline"
-                  size={26}
-                  color={'#999999'}
-                  style={{marginTop: 15}}
-                />
-                <TextInput
-                  placeholder="Email"
-                  placeholderTextColor={'#999999'}
-                  style={styles.STextInput}
-                />
-              </View>
+          </View>
+        </View>
+        {/* </ScrollView> */}
+        {/* Button login */}
+        <View style={styles.Container_Daftar}>
+          <TouchableOpacity onPress={() => navigation.navigate('login')}>
+            <View style={styles.button_masuk}>
+              <Text style={styles.textbtn}>Sign Up</Text>
             </View>
-            {/* Kata Sandi */}
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.TextInput2}>
-                <Icon
-                  name="lock-outline"
-                  size={29}
-                  color={'#999999'}
-                  style={{marginTop: 15}}
-                />
-                <TextInput
-                  placeholder="Kata Sandi"
-                  placeholderTextColor={'#999999'}
-                  style={styles.STextInput}
-                  secureTextEntry={secureTextEntry}
-                />
-                <View style={{right: 20, backgroundColor: 'white'}}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      setSecureTextEntry(!secureTextEntry);
-                    }}>
-                    <Icon
-                      name="eye-off-outline"
-                      size={26}
-                      color={'#999999'}
-                      style={{marginTop: 20}}
-                    />
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-            {/* Kode Masuk */}
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.TextInput3}>
-                <Icon
-                  name="lock-outline"
-                  size={29}
-                  color={'#999999'}
-                  style={{marginTop: 15}}
-                />
-                <TextInput
-                  placeholder="Kode Masuk"
-                  placeholderTextColor={'#999999'}
-                  style={styles.STextInput}
-                  secureTextEntry={secureTextEntry2}
-                />
-                <View style={{right: 20, backgroundColor: 'white'}}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      setSecureTextEntry2(!secureTextEntry2);
-                    }}>
-                    <Icon
-                      name="eye-off-outline"
-                      size={26}
-                      color={'#999999'}
-                      style={{marginTop: 20}}
-                    />
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-            {/* Button login */}
-            <View style={styles.Container_Daftar}>
-              <TouchableOpacity onPress={() => navigation.navigate('login')}>
-                <View style={styles.button_masuk}>
-                  <Text style={styles.textbtn}>Sign Up</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -283,12 +254,10 @@ const Register = ({navigation}) => {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    backgroundColor: '#28AFEF',
-    // padding: 20,
+    backgroundColor: '#008C74',
   },
   Header: {
-    height: responsiveScreenHeight(32),
-    // height: 280,
+    flex: 1,
     backgroundColor: '#008C74',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -298,16 +267,11 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: responsiveScreenWidth(25),
     height: responsiveScreenHeight(25),
-    // left: -15,
-    // bottom: 10,
   },
   isiHeader: {
-    // backgroundColor: 'blue',
     width: responsiveScreenWidth(35),
     height: responsiveScreenHeight(15),
     justifyContent: 'space-evenly',
-    // left: -15,
-    bottom: 20,
   },
   textWelcome: {
     fontSize: responsiveScreenFontSize(3),
@@ -318,24 +282,14 @@ const styles = StyleSheet.create({
     fontSize: responsiveScreenFontSize(2.5),
     fontFamily: 'Poppins-SemiBold',
     color: 'white',
-    // top: 10,
   },
   Container_content: {
+    flex: 2,
     backgroundColor: 'white',
-    height: '100%',
-    width: '100%',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    paddingTop: 15,
-    bottom: 30,
   },
-  dataData: {
-    justifyContent: 'center',
-    padding: 2,
-    top: 20,
-    // backgroundColor: 'green',
-    height: '65%',
-  },
+
   Container_Dropdown: {
     zIndex: 3,
     paddingRight: 70,
@@ -355,7 +309,6 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   STextInput: {
-    // backgroundColor: 'blue',
     color: 'black',
     width: '85%',
     left: 10,
@@ -377,12 +330,15 @@ const styles = StyleSheet.create({
     width: '95%',
     marginTop: 10,
   },
-  Container_Daftar: {
-    // height: '15%',
-    marginTop: 35,
+  container_input: {
+    flex: 5,
     justifyContent: 'center',
+    paddingTop: 15,
+  },
+  Container_Daftar: {
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    // backgroundColor: 'blue',
+    flex: 1,
   },
   button_masuk: {
     borderRadius: 10,

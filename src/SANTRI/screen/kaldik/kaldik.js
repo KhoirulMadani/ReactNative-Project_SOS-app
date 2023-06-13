@@ -261,6 +261,22 @@ const Kaldik = ({navigation}) => {
           status: true,
         },
       ],
+      April: [
+        {
+          date: 1,
+          day: 'senin',
+          keterangan: 'libur',
+          status: false,
+        },
+      ],
+      Mei: [
+        {
+          date: 1,
+          day: 'senin',
+          keterangan: 'libur',
+          status: false,
+        },
+      ],
     },
   };
   const [years, setYears] = useState(new Date().getFullYear());

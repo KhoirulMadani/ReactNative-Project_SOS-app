@@ -363,6 +363,22 @@ const DataAbsensi = ({navigation}) => {
           out: '15:00',
         },
       ],
+      April: [
+        {
+          date: 1,
+          status: 'Hadir',
+          in: '08:00',
+          out: '15:00',
+        },
+      ],
+      May: [
+        {
+          date: 1,
+          status: 'Hadir',
+          in: '08:00',
+          out: '15:00',
+        },
+      ],
     },
   };
 

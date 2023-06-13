@@ -17,6 +17,7 @@ import RequestKarya from '../../screen/RequestKarya/requestKarya';
 import PersonalData from '../../screen/Profile/personal data';
 import CV from '../../screen/Profile/cv/cv';
 import Portofolio from '../../screen/Profile/Portofolio/portofolio';
+import Guest from '../../../Guest/Screen/Guest/index';
 
 // Pengurus
 import ProfilePengurus from '../../../PENGURUS/screen/Profile/Profile';
@@ -24,7 +25,6 @@ import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboa
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
 import DetailDataSantri from '../../../PENGURUS/screen/ListDataSantri/detailDataSantri';
 import RequestKaryaPengurus from '../../../PENGURUS/screen/requestKarya/requestKaryaPengurus';
-
 // State management
 export const Dataglobal = createContext();
 
@@ -36,6 +36,11 @@ const Routers = () => {
         component={Splash}
         options={{headerShown: false}}
       /> */}
+      <Stack.Screen
+        name="guest"
+        component={Guest}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="login"
         component={Login}
