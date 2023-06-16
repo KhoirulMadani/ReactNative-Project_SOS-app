@@ -6,21 +6,40 @@ import {
   Alert,
   ActivityIndicator,
   StatusBar,
+  Image,
+  BackHandler,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Image} from 'react-native';
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
   responsiveScreenFontSize,
   useResponsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
+
 const Dashboard = ({navigation}) => {
-  // lifeCycle
+  // call function waktu absen
   useEffect(() => {
     Batas_absen();
   }, []);
-
+  // backhandler agar keluar aplikasi
+  useEffect(() => {
+    const handleBackButton = () => {
+      Alert.alert(
+        'Konfirmasi',
+        'Apakah Anda yakin ingin keluar dari aplikasi?',
+        [
+          {text: 'Batal', style: 'cancel'},
+          {text: 'Keluar', onPress: () => BackHandler.exitApp()},
+        ],
+      );
+      return true;
+    };
+    BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+    return () => {
+      BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+    };
+  }, []);
   // Loading
   const [loading, setLoading] = useState(true);
   // batas Absen
@@ -59,10 +78,10 @@ const Dashboard = ({navigation}) => {
   const [year, setYear] = useState(new Date().getFullYear());
   // Waktu buka absensi dan tutup absensi
   let Open_Absensi = new Date(
-    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 09:00:00`,
+    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 22:34:00`,
   ).getTime();
   let Close_Absensi = new Date(
-    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 12:30:00`,
+    `${Days[selectedDay]} ${Months[selectedMonth]} ${date} ${year} 00:00:00`,
   ).getTime();
   // Fungsi untuk batas absensi
   function Batas_absen() {

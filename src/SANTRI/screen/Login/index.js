@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -16,10 +17,89 @@ import {
   responsiveScreenFontSize,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Login = ({navigation}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // get remember me
+  useEffect(() => {
+    get_remember_Me();
+  }, []);
+  const get_remember_Me = async () => {
+    try {
+      let result = await AsyncStorage.getItem('rememberMe');
+      result = JSON.parse(result);
+      if (result != null) {
+        setEmail(result.email);
+        setToggleCheckBox(result.toggleCheckBox);
+      }
+    } catch (e) {
+      console.log('error pada saat get remember Me', e);
+    }
+  };
+  // function login
+  const login = async () => {
+    const data = {
+      email,
+      password,
+    };
+    try {
+      const result = await axios.post(
+        'http://103.175.218.30:3000/api/v1/auth/signin',
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        },
+      );
+      simpan_token(result.data.token);
+      navigation.replace('dashboard');
+    } catch (e) {
+      console.log('error login', e);
+    }
+  };
+  // save token login
+  const simpan_token = async token => {
+    try {
+      await AsyncStorage.setItem('Token', JSON.stringify(token));
+    } catch (e) {
+      console.log('error pada saat save Token', e.message);
+    }
+  };
+  // remember me
+  useEffect(() => {
+    remember_me();
+  }, [toggleCheckBox]);
+  async function remember_me() {
+    if (toggleCheckBox === true) {
+      if (email === '') {
+        Alert.alert('Peringatan', 'Harap isi form terlebih dahulu !');
+        setToggleCheckBox(false);
+      } else {
+        try {
+          await AsyncStorage.setItem(
+            'rememberMe',
+            JSON.stringify({toggleCheckBox, email}),
+          );
+        } catch (e) {
+          console.log('error pada saat remmber Me', e);
+        }
+      }
+    } else {
+      try {
+        await AsyncStorage.setItem(
+          'rememberMe',
+          JSON.stringify({toggleCheckBox, email: ''}),
+        );
+      } catch (e) {
+        console.log('error pada saat remmber Me', e);
+      }
+    }
+  }
   return (
     <View style={styles.Container}>
       <StatusBar hidden />
@@ -56,6 +136,8 @@ const Login = ({navigation}) => {
               <TextInput
                 style={styles.STextInput}
                 underlineColorAndroid="transparent"
+                onChangeText={val => setEmail(val)}
+                value={email}
               />
             </View>
           </View>
@@ -81,6 +163,7 @@ const Login = ({navigation}) => {
                 secureTextEntry={secureTextEntry}
                 style={styles.STextInput}
                 underlineColorAndroid="transparent"
+                onChangeText={val => setPassword(val)}
               />
               <TouchableOpacity
                 onPress={() => {
@@ -103,8 +186,9 @@ const Login = ({navigation}) => {
             <CheckBox
               disabled={false}
               value={toggleCheckBox}
-              onValueChange={newValue => {
-                setToggleCheckBox(newValue);
+              onValueChange={() => {
+                setToggleCheckBox(!toggleCheckBox);
+                remember_me();
               }}
               tintColors={{true: '#008C74', false: '#999999'}}
             />
@@ -119,9 +203,7 @@ const Login = ({navigation}) => {
           </View>
           {/* Sign IN */}
           <View style={styles.viewTombol}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('dashboard')}>
+            <TouchableOpacity style={styles.button} onPress={() => login()}>
               <Text style={styles.textSignIn}>Sign In</Text>
             </TouchableOpacity>
           </View>
