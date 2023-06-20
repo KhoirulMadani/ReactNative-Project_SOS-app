@@ -18,6 +18,7 @@ import PersonalData from '../../screen/Profile/personal data';
 import CV from '../../screen/Profile/cv/cv';
 import Portofolio from '../../screen/Profile/Portofolio/portofolio';
 import Guest from '../../../Guest/Screen/Guest/index';
+import OTP from '../../screen/OTP';
 
 // Pengurus
 import ProfilePengurus from '../../../PENGURUS/screen/Profile/Profile';
@@ -25,12 +26,13 @@ import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboa
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
 import DetailDataSantri from '../../../PENGURUS/screen/ListDataSantri/detailDataSantri';
 import RequestKaryaPengurus from '../../../PENGURUS/screen/requestKarya/requestKaryaPengurus';
+import SetNewPassword from '../../screen/Set New Password';
 // State management
 export const Dataglobal = createContext();
 
 const Routers = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="">
       {/* <Stack.Screen
         name="splash"
         component={Splash}
@@ -44,6 +46,16 @@ const Routers = () => {
       <Stack.Screen
         name="login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="kodeotp"
+        component={OTP}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="setNewPassword"
+        component={SetNewPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen

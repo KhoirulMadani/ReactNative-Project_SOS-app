@@ -15,10 +15,12 @@ import {
   responsiveScreenFontSize,
   useResponsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Dashboard = ({navigation}) => {
   // lifeCycle
   useEffect(() => {
     Batas_absen();
+    gettoken();
   }, []);
 
   // Loading
@@ -78,6 +80,21 @@ const Dashboard = ({navigation}) => {
       }
     }, 0.001);
   }
+
+  const [token, setToken] = useState('');
+
+  const gettoken = async () => {
+    try {
+      let result = await AsyncStorage.getItem('Pengingat');
+      result = JSON.parse(result);
+      if (result != null) {
+        setToken(result);
+        console.log(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View
