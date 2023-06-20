@@ -56,8 +56,12 @@ const Login = ({navigation}) => {
           },
         },
       );
-      simpan_token(result.data.token);
-      navigation.replace('dashboard');
+      simpan_token({token: result.data.token, role: result.data.account.role});
+      if (result.data.account.role === 'MANAGER') {
+        navigation.navigate('dashboardpengurus');
+      } else {
+        navigation.navigate('dashboard');
+      }
     } catch (e) {
       console.log('error login', e);
     }
@@ -198,19 +202,19 @@ const Login = ({navigation}) => {
                 fontFamily: 'Poppins-SemiBold',
                 fontSize: responsiveScreenFontSize(1.7),
               }}>
-              Remember Me !
+              Ingatkan saya !
             </Text>
           </View>
           {/* Sign IN */}
           <View style={styles.viewTombol}>
             <TouchableOpacity style={styles.button} onPress={() => login()}>
-              <Text style={styles.textSignIn}>Sign In</Text>
+              <Text style={styles.textSignIn}>Masuk</Text>
             </TouchableOpacity>
           </View>
           {/* Forget Password */}
           <View style={styles.viewForget}>
             <TouchableOpacity>
-              <Text style={styles.textForget}>Forget Password ? </Text>
+              <Text style={styles.textForget}>Lupa password ? </Text>
             </TouchableOpacity>
           </View>
         </View>

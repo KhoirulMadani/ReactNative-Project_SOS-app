@@ -25,6 +25,9 @@ import DashboardPengurus from '../../../PENGURUS/screen/DashboardPegurus/dashboa
 import Listdatasantri from '../../../PENGURUS/screen/ListDataSantri/Listdatasantri';
 import DetailDataSantri from '../../../PENGURUS/screen/ListDataSantri/detailDataSantri';
 import RequestKaryaPengurus from '../../../PENGURUS/screen/requestKarya/requestKaryaPengurus';
+import Buat_materi from '../../../PENGURUS/screen/Buat_materi/buatMateri';
+import Daftar_materi from '../../../PENGURUS/screen/Daftar_materi/daftarMateri';
+import Detail_materi from '../../../PENGURUS/screen/Detail_materi/detail_materi';
 // State management
 export const Dataglobal = createContext();
 
@@ -106,7 +109,7 @@ const Routers = () => {
         component={Portofolio}
         options={{headerShown: false}}
       />
-      {/* Penngurus */}
+      {/* screen Pengurus */}
       <Stack.Screen
         name="dashboardpengurus"
         component={DashboardPengurus}
@@ -130,6 +133,21 @@ const Routers = () => {
       <Stack.Screen
         name="profilepengurus"
         component={ProfilePengurus}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="buatmateri"
+        component={Buat_materi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="daftarmateri"
+        component={Daftar_materi}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="detailmateri"
+        component={Detail_materi}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

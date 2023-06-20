@@ -41,63 +41,110 @@ const DashboardPengurus = ({navigation}) => {
       </View>
       {/* Container fitures */}
       <View style={styles.ContainerFitures}>
-        <Fitures
-          onPress={() => navigation.navigate('listdatasantri')}
-          source={require('../../assets/Icons/membacaDataSantri.png')}
-          style={{
-            width: responsiveScreenWidth(20),
-            height: responsiveScreenHeight(10),
-            backgroundColor: '#2BBFEE',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-          }}
-          styleImage={{
-            width: responsiveScreenWidth(15),
-            resizeMode: 'contain',
-            height: responsiveScreenHeight(10),
-          }}
-          text1="Membaca"
-          text2={'data Santri'}
-        />
-        <Fitures
-          onPress={() => navigation.navigate('requestkaryapengurus')}
-          source={require('../../assets/Icons/Request.png')}
-          styleImage={{
-            width: responsiveScreenWidth(15),
-            resizeMode: 'contain',
-            height: responsiveScreenHeight(10),
-          }}
-          style={{
-            width: responsiveScreenWidth(20),
-            height: responsiveScreenHeight(10),
-            backgroundColor: '#FFCEFE',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-          }}
-          text1="Request Karya"
-        />
-        <Fitures
-          onPress={() => {
-            navigation.navigate('profilepengurus');
-          }}
-          source={require('../../assets/Icons/Profile.png')}
-          styleImage={{
-            width: responsiveScreenWidth(28),
-            resizeMode: 'contain',
-            height: responsiveScreenHeight(10),
-          }}
-          style={{
-            width: responsiveScreenWidth(20),
-            height: responsiveScreenHeight(10),
-            backgroundColor: '#B6E2A1',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 10,
-          }}
-          text1="Profil Saya"
-        />
+        <View style={styles.line}>
+          <Fitures
+            onPress={() => navigation.navigate('listdatasantri')}
+            source={require('../../assets/Icons/membacaDataSantri.png')}
+            style={{
+              width: responsiveScreenWidth(20),
+              height: responsiveScreenHeight(10),
+              backgroundColor: '#2BBFEE',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+            styleImage={{
+              width: responsiveScreenWidth(15),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
+            text1="Membaca"
+            text2={'data Santri'}
+          />
+          <Fitures
+            onPress={() => navigation.navigate('requestkaryapengurus')}
+            source={require('../../assets/Icons/Request.png')}
+            styleImage={{
+              width: responsiveScreenWidth(15),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
+            style={{
+              width: responsiveScreenWidth(20),
+              height: responsiveScreenHeight(10),
+              backgroundColor: '#FFCEFE',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+            text1="Request Karya"
+          />
+          <Fitures
+            onPress={() => {
+              navigation.navigate('profilepengurus');
+            }}
+            source={require('../../assets/Icons/Profile.png')}
+            styleImage={{
+              width: responsiveScreenWidth(28),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
+            style={{
+              width: responsiveScreenWidth(20),
+              height: responsiveScreenHeight(10),
+              backgroundColor: '#B6E2A1',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+            text1="Profil Saya"
+          />
+        </View>
+        {/* baris kedua */}
+        <View style={styles.line}>
+          <Fitures
+            onPress={() => {
+              navigation.navigate('buatmateri');
+            }}
+            source={require('../../assets/Icons/membacaDataSantri.png')}
+            style={{
+              width: responsiveScreenWidth(20),
+              height: responsiveScreenHeight(10),
+              backgroundColor: '#2BBFEE',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+            styleImage={{
+              width: responsiveScreenWidth(15),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
+            text1="Buat materi"
+            text2={'pembelajaran'}
+          />
+          <Fitures
+            onPress={() => {
+              navigation.navigate('daftarmateri');
+            }}
+            source={require('../../assets/Icons/Request.png')}
+            style={{
+              width: responsiveScreenWidth(20),
+              height: responsiveScreenHeight(10),
+              backgroundColor: '#2BBFEE',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 10,
+            }}
+            styleImage={{
+              width: responsiveScreenWidth(15),
+              resizeMode: 'contain',
+              height: responsiveScreenHeight(10),
+            }}
+            text1="Daftar materi"
+            text2={'pembelajaran'}
+          />
+        </View>
       </View>
     </View>
   );
@@ -135,14 +182,16 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   ContainerFitures: {
-    // backgroundColor: 'red',
+    backgroundColor: 'red',
+  },
+  line: {
     paddingTop: responsiveScreenHeight(2),
     paddingHorizontal: 25,
-    marginTop: responsiveScreenHeight(2),
-    height: '48%',
+
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+    backgroundColor: 'green',
   },
 });
 const Fitures = ({source, text1, text2, style, onPress, styleImage}) => {

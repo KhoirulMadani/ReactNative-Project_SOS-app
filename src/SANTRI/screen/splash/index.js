@@ -2,13 +2,17 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import React, {useEffect} from 'react';
 import AnimatedLottieView from 'lottie-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {simpan_token_diRedux} from '../../../state_management/context/Token';
 const Splash = ({navigation}) => {
+  const dispatch = useDispatch();
+  // lifecycle
   useEffect(() => {
     setTimeout(() => {
       in_dashboard();
     }, 3000);
   }, []);
+  // fungsi cek token
   const in_dashboard = async () => {
     try {
       let result = await AsyncStorage.getItem('Token');
@@ -16,7 +20,12 @@ const Splash = ({navigation}) => {
       if (result == null || result == '') {
         navigation.replace('guest');
       } else if (result != null || result != '') {
-        navigation.replace('dashboard');
+        dispatch(simpan_token_diRedux(result.token));
+        if (result.role === 'MANAGER') {
+          navigation.replace('dashboardpengurus');
+        } else {
+          navigation.replace('dashboard');
+        }
       }
     } catch (e) {
       console.log('error pada saat cek token di screen guest', e.message);

@@ -55,30 +55,7 @@ const Register = ({navigation}) => {
       icon: () => <Icon3 name={'code'} size={25} color="#999999" />,
     },
   ]);
-  // data dropdown pilih framework
-  const [open2, setOpen2] = useState(false);
-  // const [items2, setItems2] = useState([
-  //   {
-  //     label: 'React Native',
-  //     value: 'React Native',
-  //   },
-  //   {
-  //     label: 'React JS',
-  //     value: 'React JS',
-  //   },
-  //   {
-  //     label: 'Laravel',
-  //     value: 'Laravel',
-  //   },
-  //   {
-  //     label: 'Golang',
-  //     value: 'Golang',
-  //   },
-  //   {
-  //     label: 'Node JS',
-  //     value: 'Node JS',
-  //   },
-  // ]);
+
   return (
     <View style={styles.Container}>
       <StatusBar backgroundColor={'transparent'} translucent />
