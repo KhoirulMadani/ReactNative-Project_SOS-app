@@ -5,6 +5,7 @@ import {
   StatusBar,
   Image,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -13,7 +14,16 @@ import {
   responsiveScreenWidth,
   responsiveScreenFontSize,
 } from 'react-native-responsive-dimensions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Profile = ({navigation}) => {
+  const delete_token = async data => {
+    try {
+      await AsyncStorage.setItem('Token', JSON.stringify(data));
+      navigation.replace('login');
+    } catch (e) {
+      console.log('error pada saat delete token', e.message);
+    }
+  };
   return (
     <View style={{flex: 1}}>
       {/* Status bar */}
@@ -101,6 +111,22 @@ const Profile = ({navigation}) => {
               resizeMode: 'contain',
             }}
             styleContainer={{paddingLeft: responsiveScreenWidth(4)}}
+            onPress={() =>
+              Alert.alert(
+                'Peringatan',
+                'Apakah anda yakin untuk keluar dari akun ini ?',
+                [
+                  {
+                    text: 'Tidak',
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'Iyaa',
+                    onPress: () => delete_token(''),
+                  },
+                ],
+              )
+            }
           />
         </View>
       </View>

@@ -34,10 +34,12 @@ const Routers = () => {
   return (
     <Stack.Navigator initialRouteName="">
       {/* <Stack.Screen
+    <Stack.Navigator>
+      <Stack.Screen
         name="splash"
         component={Splash}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="guest"
         component={Guest}

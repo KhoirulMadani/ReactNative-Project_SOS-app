@@ -1,13 +1,27 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
 import React, {useEffect} from 'react';
 import AnimatedLottieView from 'lottie-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('login');
-    }, 5000);
+      in_dashboard();
+    }, 3000);
   }, []);
+  const in_dashboard = async () => {
+    try {
+      let result = await AsyncStorage.getItem('Token');
+      result = JSON.parse(result);
+      if (result == null || result == '') {
+        navigation.replace('guest');
+      } else if (result != null || result != '') {
+        navigation.replace('dashboard');
+      }
+    } catch (e) {
+      console.log('error pada saat cek token di screen guest', e.message);
+    }
+  };
   return (
     <View style={styles.Container}>
       <View style={styles.Container_Image}>
