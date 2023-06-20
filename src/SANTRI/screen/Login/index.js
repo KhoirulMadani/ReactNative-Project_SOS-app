@@ -11,17 +11,22 @@ import {
 import React, {useEffect, useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import CheckBox from '@react-native-community/checkbox';
+import Modal from 'react-native-modal';
 import {
   responsiveScreenHeight,
   responsiveScreenWidth,
   responsiveScreenFontSize,
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
+
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const Login = ({navigation}) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
+  const [modal, setModal] = useState(false);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // get remember me
@@ -104,8 +109,63 @@ const Login = ({navigation}) => {
       }
     }
   }
+
   return (
     <View style={styles.Container}>
+      {/* MODAL */}
+      <Modal isVisible={modal}>
+        <View
+          style={{
+            backgroundColor: '#ffff',
+            paddingVertical: 20,
+            paddingHorizontal: 20,
+            borderRadius: 10,
+          }}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontFamily: 'Poppins-Bold', color: '#008c74'}}>
+              Send Your Email !
+            </Text>
+            <TouchableOpacity onPress={() => setModal(false)}>
+              <Text style={{fontFamily: 'Poppins-Bold', color: '#999999'}}>
+                Close
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              // backgroundColor: 'green',
+              height: responsiveScreenHeight(10),
+              justifyContent: 'center',
+            }}>
+            <Text style={styles.textTiltle}>Email</Text>
+            <View style={styles.TextInput}>
+              <Icon
+                name="email-outline"
+                size={responsiveScreenWidth(7)}
+                color={'#999999'}
+                style={{marginTop: 15}}
+              />
+              <TextInput
+                style={styles.STextInput}
+                underlineColorAndroid="transparent"
+              />
+            </View>
+          </View>
+
+          <View style={styles.viewTombol}>
+            <TouchableOpacity
+              style={styles.submit}
+              onPress={() => {
+                navigation.navigate('kodeotp');
+                setModal(false);
+              }}>
+              <Text style={styles.textSignIn}>Submit</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
       <StatusBar hidden />
       {/* HEADER */}
       <View style={styles.Header}>
@@ -194,7 +254,7 @@ const Login = ({navigation}) => {
                 setToggleCheckBox(!toggleCheckBox);
                 remember_me();
               }}
-              tintColors={{true: '#008C74', false: '#999999'}}
+              tintColors={{true: '#008c74', false: '#999999'}}
             />
             <Text
               style={{
@@ -213,7 +273,7 @@ const Login = ({navigation}) => {
           </View>
           {/* Forget Password */}
           <View style={styles.viewForget}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setModal(true)}>
               <Text style={styles.textForget}>Lupa password ? </Text>
             </TouchableOpacity>
           </View>
@@ -343,6 +403,15 @@ const styles = StyleSheet.create({
     width: responsiveScreenWidth(90),
     height: responsiveScreenHeight(6.5),
     borderRadius: responsiveScreenWidth(3),
+  },
+  submit: {
+    backgroundColor: '#008C74',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: responsiveScreenWidth(80),
+    height: responsiveScreenHeight(6.5),
+    borderRadius: responsiveScreenWidth(3),
+    elevation: 4,
   },
   textSignIn: {
     color: 'white',

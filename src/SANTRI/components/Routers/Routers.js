@@ -18,6 +18,7 @@ import PersonalData from '../../screen/Profile/personal data';
 import CV from '../../screen/Profile/cv/cv';
 import Portofolio from '../../screen/Profile/Portofolio/portofolio';
 import Guest from '../../../Guest/Screen/Guest/index';
+import OTP from '../../screen/OTP';
 
 // Pengurus
 import ProfilePengurus from '../../../PENGURUS/screen/Profile/Profile';
@@ -28,6 +29,7 @@ import RequestKaryaPengurus from '../../../PENGURUS/screen/requestKarya/requestK
 import Buat_materi from '../../../PENGURUS/screen/Buat_materi/buatMateri';
 import Daftar_materi from '../../../PENGURUS/screen/Daftar_materi/daftarMateri';
 import Detail_materi from '../../../PENGURUS/screen/Detail_materi/detail_materi';
+import SetNewPassword from '../../screen/Set New Password';
 // State management
 export const Dataglobal = createContext();
 
@@ -47,6 +49,16 @@ const Routers = () => {
       <Stack.Screen
         name="login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="kodeotp"
+        component={OTP}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="setNewPassword"
+        component={SetNewPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen
